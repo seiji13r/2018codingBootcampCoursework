@@ -37,7 +37,8 @@ section {
     background-color: #ebebeb;
     padding: 20px 5px;
     margin: 10px;
-    width: 55.5%;
+    /* width: 55.56%; */
+    width: calc(60% - 20px);
     height: 210px;
     float: left;
 }
@@ -50,7 +51,8 @@ article{
 }
 
 aside {
-    width: 39%;
+    /* width: 39%; */
+    width: calc(40% - 20px);
     height: 210px;
     float: right;
 }
