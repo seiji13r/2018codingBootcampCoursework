@@ -1,0 +1,32 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #97AABD;
+    font-family: Helvetica, Arial, sans-serif;
+    /* font-size: 1.2em; */
+    line-height: 2em;
+}
+
+header {
+    width: 80%;
+    margin: 20px auto;
+    padding: 10px;
+    background-image: linear-gradient(45deg, #0B65B1, #333);
+    color: white;
+    text-align: center;
+}
+
+header h2{
+    text-align: right;
+    color: #97AABD;
+}
+
+.container-1{
+    background: white;
+    width: 80%;
+    margin: 20px auto;
+    padding: 20px;
+
+}
