@@ -1,0 +1,8 @@
+.navbar{
+    padding: 50px auto;
+}
+.navbar-brand{
+    padding: 5px;
+    border-radius: 5px;
+    background-color: #4aaaa5;
+}
