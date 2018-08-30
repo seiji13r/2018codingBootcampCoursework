@@ -46,3 +46,9 @@ main.container h1{
     line-height: 30px; /* Vertically center the text there */
     border-top: 5px solid #4AAAA5;
 }
+
+@media (max-width: 767.98px){
+    .footer {
+        position: static;
+    }
+}
