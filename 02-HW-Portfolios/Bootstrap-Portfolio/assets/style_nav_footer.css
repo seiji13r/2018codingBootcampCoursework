@@ -1,0 +1,48 @@
+body {
+    background-image: url("../images/gravel.png");
+    font-family: 'Arial', 'Helvetica Neue', Helvetica, sans-serif;
+}
+
+.navbar {
+    padding: 0;
+    border: 1px solid #DDDDDD;
+}
+
+.navbar-brand{
+    margin: 0 auto 0 30px;
+    padding: 15px;
+    background-color: #4aaaa5;
+    color: #ffffff !important;
+    font-size: 1.5rem;
+}
+
+.navbar-toggler {
+    margin: 0 10px 0 auto;
+}
+
+.navbar-nav {
+    margin: 0 10px 0 auto;
+    text-align: right;
+}
+
+main.container {
+    margin-top: 96px;
+    margin-bottom: 40px;
+    background: #ffffff;
+    border: 2px solid #DDDDDD;
+    border-radius: 10px;
+    min-height: calc(100vh - 40px);
+}
+
+main.container h1{
+    color: #4aaaa5;
+}
+
+.footer {
+    position: sticky;
+    bottom: 0;
+    width: 100%;
+    height: 35px; /* Set the fixed height of the footer here */
+    line-height: 30px; /* Vertically center the text there */
+    border-top: 5px solid #4AAAA5;
+}
