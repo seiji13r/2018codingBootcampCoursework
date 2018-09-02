@@ -108,9 +108,9 @@ nav{
     width: 960px;
     border: 2px solid #DDDDDD;
     border-top: none;
-    margin: 0 auto;
+    margin: 0 auto 15px auto;
     padding: 30px;
-    min-height: calc(100vh - 70px);
+    min-height: calc(100vh - 170px);
 }
 
 .container h1
@@ -224,25 +224,169 @@ nav{
     font-size: 12px;
     color:white;
     height: 65px;
-    /* margin-bottom: -60px; */
     width: 100%;
     position: sticky;
     bottom: 0;
 }
 
-/* 
-// Extra small devices (portrait phones, less than 576px)
-@media (max-width: 575.98px) { ... }
 
-// Small devices (landscape phones, 576px and up)
-@media (min-width: 576px) and (max-width: 767.98px) { ... }
+/* ************************** */
+/* Media Queries Definition   */
+/* ************************** */
 
-// Medium devices (tablets, 768px and up)
-@media (min-width: 768px) and (max-width: 991.98px) { ... }
+@media (max-width: 980px){
+    .nav-container{
+        width: 90%;
+        margin: 0 auto;
+    }
 
-// Large devices (desktops, 992px and up)
-@media (min-width: 992px) and (max-width: 1199.98px) { ... }
+    .main-header {
+        width: 60%;
+        margin: 100px auto 0 20px;
+    }
+    
+    .container {
+        width: 60%;
+        margin: 0 auto 85px 20px;
+        min-height: auto;
+    }
 
-// Extra large devices (large desktops, 1200px and up)
-@media (min-width: 1200px) { ... }
-*/
+    .portfolio-footer  {
+        position: fixed;
+    }
+
+    .project-box{
+        padding: 0;
+        height: auto;
+        width: calc(50% - 40px);
+    }
+
+    .project-box img{
+        width: 100%;
+        margin: 0 auto;
+    }
+}
+
+@media (max-width: 780px){
+    .nav-container{
+        width: 90%;
+        margin: 0 auto;
+    }
+
+    .main-header {
+        width: 90%;
+        margin: 100px auto 0 auto;
+    }
+    
+    .container {
+        width: 90%;
+        margin: 0 auto 85px auto;
+        min-height: auto;
+    }
+
+    .portfolio-footer  {
+        position: fixed;
+    }
+
+    .project-box{
+        padding: 0;
+        height: auto;
+        width: calc(50% - 40px);
+    }
+
+    .project-box img{
+        width: 100%;
+        margin: 0 auto;
+    }
+}
+
+@media (max-width: 640px){
+    /* ************************** */
+    /* File index.html Styles     */
+    /* Nav Styling for 640px      */
+    /* ************************** */
+
+    nav{
+        padding: 0;
+        position: static;
+    }
+
+    .nav-container{
+        width: 100%;
+        margin: 0 auto;
+        overflow: auto;
+        position: relative;
+    }
+
+    .name-box {
+        background: #4AAAA5;
+        text-align: center;
+        width: 100%;
+        padding: 20px;
+        margin: 0;
+        display: block;
+        position: static;
+    }
+    
+    .name-box h1{
+        color: #ffffff;
+    }
+    
+    .menu-box{
+        width: 100%;
+        margin: 20px auto;
+        padding: 0;
+        display: block;
+        position: static;
+        text-align: center;
+    }
+
+    .menu-box a,
+    .menu-box span {
+        display: inline-block;
+        float: none;
+        color: #777777;
+    }
+
+    .main-header {
+        width: 90%;
+        margin: 16px auto 0 auto;
+    }
+    
+    .container {
+        width: 90%;
+        margin: 0 auto 15px auto;
+        min-height: auto;
+    }
+
+    .container img {
+        display: block;
+        width: 100%;
+        margin: 0 auto 15px auto;
+    }
+
+    .portfolio-footer {
+        position: static;
+    }
+
+    /* ************************** */
+    /* File porfolio.html Styles  */
+    /* ************************** */
+
+    .project-box{
+        margin: 20px auto;
+        padding: 0;
+        height: auto;
+        width: 100%;
+    }
+
+    .project-box:hover{
+        z-index: 0;
+        transform: none;
+    }
+
+    .project-box img{
+        width: 100%;
+        margin: 0 auto;
+    }
+}
