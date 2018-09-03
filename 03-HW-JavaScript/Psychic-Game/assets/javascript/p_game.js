@@ -1,0 +1,1 @@
+console.log("Psychic Game [Seiji Test]")

@@ -1,0 +1,1 @@
+console.log("Word Guess Game [Seiji Test]")
