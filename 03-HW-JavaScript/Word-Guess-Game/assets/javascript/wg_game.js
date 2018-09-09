@@ -16,6 +16,7 @@ var gameWords = [
     "krabappel",
     "krusty",
     "moe",
+    "nelson"
 ]
 
 var maxGuesses = 10;
