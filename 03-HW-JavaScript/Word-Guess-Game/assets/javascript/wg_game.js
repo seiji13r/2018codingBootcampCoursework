@@ -2,16 +2,20 @@ console.log("Word Guess Game [Seiji Test]")
 
 
 var gameWords = [
-    "homer",
-    "bart",
+    // "homer",
+    // "bart",
     "marge",
-    "lisa",
-    "maggie",
-    "milhouse",
-    "burns",
-    "smithers",
-    "apu",
-    "barney"
+    // "lisa",
+    // "maggie",
+    // "milhouse",
+    // "burns",
+    // "smithers",
+    // "apu",
+    // "barney",
+    // "flanders",
+    // "krabappel",
+    // "krusty",
+    // "moe",
 ]
 
 var maxGuesses = 10;
@@ -30,6 +34,8 @@ var youWin = function(gameWord){
         "src","assets/images/" + gameWord.toLowerCase() + ".png");
     resultImage.setAttribute(
         "alt", gameWord);
+    var audio = new Audio("assets/sounds/" + gameWord.toLowerCase()+'.mp3');
+    audio.play();
 };
 var youLose = function(gameWord){
     console.log("you lose");
