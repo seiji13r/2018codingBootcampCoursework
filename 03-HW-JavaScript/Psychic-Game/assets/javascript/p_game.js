@@ -1,6 +1,7 @@
 console.log("Psychic Game [Seiji Test]")
 
-var possibleKeys = "º1234567890'¡qwertyuiop`+asdfghjklñ´ç<zxcvbnm,.-";
+// var possibleKeys = "º1234567890'¡qwertyuiop`+asdfghjklñ´ç<zxcvbnm,.-";
+var possibleKeys = "qwertyuiopasdfghjklñçzxcvbnm";
 // console.log("possibleKeys.length: " + possibleKeys.length)
 var myKey = "";
 var compKey = ""
@@ -26,23 +27,31 @@ var lossesHtml = document.getElementById("losses");
 var yourGuessesSoFar = document.getElementById("yourGuessesSoFar");
 var guessesLeft = document.getElementById("guessesLeft");
 var alertH = document.getElementById("alertH");
+var mainHeader = document.getElementById("mainHeader")
 
 var youWin = function(){
     alertOn = true;
     alertH.setAttribute("class", "jumbotron bg-success");
     alertH.innerHTML = "You Win!!"
+    mainHeader.classList.remove("bg-light");
+    mainHeader.classList.add("bg-success");
 }
 
 var youLose = function(){
     alertOn = true;
     alertH.setAttribute("class", "jumbotron bg-danger");
     alertH.innerHTML = "You Lose!!"
+    mainHeader.classList.remove("bg-light");
+    mainHeader.classList.add("bg-danger");
 }
 
 var clearAlert = function(){
     alertOn = false;
     alertH.setAttribute("class", "jumbotron bg-primary");
     alertH.innerHTML = "= &gt;.&lt; ="
+    mainHeader.classList.remove("bg-success");
+    mainHeader.classList.remove("bg-danger");
+    mainHeader.classList.add("bg-light");
 }
 
 document.onkeydown = function(event){
