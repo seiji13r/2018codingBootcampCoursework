@@ -2,31 +2,58 @@ console.log("Word Guess Game [Seiji Test]")
 
 
 var gameWords = [
-    "cats",
-    "dogs",
-    "mice",
-    "lions",
-    "parrots",
-    "donkeys",
+    "homer",
+    "bart",
+    "marge",
+    "lisa",
+    "maggie",
+    "milhouse",
+    "burns",
+    "smithers",
+    "apu",
+    "barney"
 ]
 
 var maxGuesses = 10;
 var guessesRemaining = maxGuesses;
 var wordSize = 0;
 var lettersGuessed = "";
+var resultImage = document.getElementById("image-result");
+var wordPlaceholder = document.getElementById('word-placeholder');
+var wordPlaceholderMessage = document.getElementById('word-placeholder-message');
 
-var youWin = function(){};
-var youLose = function(){};
-var removeAlerts = function(){};
+var youWin = function(gameWord){
+    console.log("you win");
+    wordPlaceholder.setAttribute("style","color: green");
+    wordPlaceholderMessage.innerText = "Hit Any Key To Play Again"
+    resultImage.setAttribute(
+        "src","assets/images/" + gameWord.toLowerCase() + ".png");
+    resultImage.setAttribute(
+        "alt", gameWord);
+};
+var youLose = function(gameWord){
+    console.log("you lose");
+    // console.log(resultImage);
+    wordPlaceholder.innerText = gameWord;
+    wordPlaceholder.setAttribute("style","color: red");
+    wordPlaceholderMessage.innerText = "Hit Any Key To Play Again"
+    resultImage.setAttribute("src","assets/images/you_lose.jpg");
+};
+var removeAlerts = function(){
+    wordPlaceholder.removeAttribute("style")
+    wordPlaceholderMessage.innerText = ""
+    resultImage.setAttribute("src","assets/images/simpsons_logo.png");
+};
 
 document.onkeydown = function(event){
-    myKey = event.key.toLowerCase();
+    myKey = event.key.toUpperCase();
     // console.log("myKey: " + myKey)
 
     // Initialize the game if Guesses Remaining are Maximum Guesses allowed.
     if (guessesRemaining==maxGuesses){
         removeAlerts();
         gameWord = gameWords[Math.floor(Math.random()*gameWords.length)]
+        gameWord = gameWord.toUpperCase();
         console.log("gameWord: " + gameWord);
         wordSize = gameWord.length
         console.log("wordSize: " + wordSize);
@@ -37,23 +64,24 @@ document.onkeydown = function(event){
     // subtract one to the Guesses oportunities.
     if(lettersGuessed.indexOf(myKey) == -1){
         lettersGuessed += myKey;
-        console.log("lettersGuessed: " + lettersGuessed)
+        // console.log("lettersGuessed: " + lettersGuessed)
         --guessesRemaining
-        console.log("guessesRemaining: " + guessesRemaining)
+        // console.log("guessesRemaining: " + guessesRemaining)
     }
     
 
     winGame = drawGame(gameWord, lettersGuessed);
 
-    if(guessesRemaining == 0 || winGame === true){
+    if(guessesRemaining === 0 && winGame !== true){
+        youLose(gameWord);
+    }
+
+    if(guessesRemaining === 0 || winGame === true){
         guessesRemaining = maxGuesses;
     }
 
     if(winGame){
-        youWin();
-    }
-    if(guessesRemaining == 0 ){
-        youLose();
+        youWin(gameWord);
     }
 
 };
@@ -76,10 +104,15 @@ var drawGame = function(gameWord, guessedLetters){
     displayGuessedLetters = guessedLetters.match(/.{1}/g).join(', ');
     document.getElementById('choices-placeholder').innerText = displayGuessedLetters;
 
+    // Display the global variable guessesRemaining in the page
+    document.getElementById('guesses-remaining').innerText = guessesRemaining;
+
     if(displayWord.indexOf("_") > -1){
+        // console.log("Draw Game return false");
         return false;
     }
     else{
+        // console.log("Draw Game return true");
         return true;
     } 
 }

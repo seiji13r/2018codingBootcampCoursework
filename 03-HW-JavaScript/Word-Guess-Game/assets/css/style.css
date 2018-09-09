@@ -1,0 +1,50 @@
+@import url('https://fonts.googleapis.com/css?family=Gloria+Hallelujah|Montserrat');
+
+* {
+    /* border: 1px solid gray; */
+}
+
+body{
+    font-family: 'Montserrat', sans-serif;
+    background-color: #70D1FF;
+}
+
+.header{
+    background: url('../images/simpsons_header_bg.png') no-repeat;
+    height: 350px;
+    background-size: 100%;
+    background-position: 0 -145px; 
+    position: relative;
+}
+
+.header .title {
+    text-shadow: 3px 3px black;
+    position: absolute;
+    width: 40%;
+    right: 0%;
+    bottom: 5%;
+}
+
+.header .image {
+    width: 33%;
+    position: absolute;
+    right: 5%;
+    bottom: 35%;
+}
+
+.instructions{
+    padding: 20px 0 20px 0;
+}
+
+.image-result{
+    width: 50%;
+}
+
+.words-container{
+    height: 50vh;
+}
+
+.words-container h2{
+    font-family: 'Gloria Hallelujah', cursive;
+    padding-top: 5%;
+}

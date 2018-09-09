@@ -13,12 +13,44 @@
     <title>Word-Guess-Game [Seiji Osada]</title>
   </head>
   <body>
+    <header class="container header">
+      <h1 class="title text-center text-white">Word-Guess-Game</h1>
+      <img class="image rounded" src="assets/images/simpsons_logo.png" alt="">
+    </header>
+    <br>
     <main class="container">
-        <h1>Word-Guess-Game</h1>
-        <div class="row">
+        <div class="row instructions bg-light">
           <div class="col-md-12">
-            <div id="word-placeholder">Word Placeholder</div>
-            <div id="choices-placeholder">Choices Placeholder</div>
+            <div class="instructions text-center">
+              <h2>Try guessing the Character's Name of The Simpsons Series.</h2>
+            </div>
+          </div>
+        </div>
+        <br>
+        <div class="row bg-light">
+          <div class="col-md-4 text-center my-auto w-50">
+            <img id="image-result" class="image-result img-fluid" src="assets/images/simpsons_logo.png" alt="Image Result">
+          </div>
+          <div class="col-md-8">
+            <div class="row words-container">
+              <div class="col-md-12 h-50">
+                <h2 class="text-center">
+                    Character Name: 
+                    <span id="word-placeholder"></span>
+                    <br>
+                    <span id="word-placeholder-message">
+                      Hit Any Key To Start
+                    </span>
+                </h2>
+              </div>
+              <div class="col-md-12 h-50" >
+                <h2 class="text-center">
+                    Guesses: <span id="choices-placeholder"></span>
+                    <br>
+                    Guesses Remaining: <span id="guesses-remaining"></span>
+                </h2>
+              </div>
+            </div>
           </div>
         </div>
     </main>
