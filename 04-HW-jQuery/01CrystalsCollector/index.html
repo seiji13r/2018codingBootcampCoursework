@@ -12,10 +12,58 @@
   <header>
     <h1>This is the Crystal Collector Game</h1>
   </header>
-  <main>
-    <h2>Here we have the main section</h2>
-  </main>
   
+  <section class="instructions">
+    <p>
+      You will be given a random numberat the start of the game.
+    </p>
+    <p>
+      There are four crystals below. By clicking on a crystal you will add a specific amount of points to your total score.
+    </p>
+    <p>
+      You win the game by matching your total score to random number, you lose the game if your total score goes above the reandom number.
+    </p>
+    <p>
+      The value of each crystal is hidden from you until you click on it.
+    </p>
+    <p>
+      Each time when the game starts, the game will change the calues of each crystal.
+    </p>
+  </section>
+
+  <div class="stats-container">
+    <section class="comp-score-container">
+      <span class="comp-score big-text" id="computer-score">39</span>
+    </section>
+
+    <section class="stats mid-text">
+      <table>
+        <tr>
+          <td class="text-right">Wins:</td><td class="text-left" id="wins">#</td>
+        </tr>
+        <tr>
+          <td class="text-right">Losses:</td><td class="text-left" id="losses">#</td>
+        </tr>
+      </table>
+    </section>
+  </div>
+
+  <section class="cristals">
+    <img src="assets/images/ruby.png" alt="ruby" class="cristal" id="ruby">
+    <img src="assets/images/sapphire.png" alt="sapphire" class="cristal" id="sapphire">
+    <img src="assets/images/topaz.png" alt="topaz" class="cristal" id="topaz">
+    <img src="assets/images/emerald.png" alt="emerald" class="cristal" id="emerald">
+  </section>
+
+  <section class="score-message mid-text">
+    Your total score is:
+  </section>
+
+  <section class="score-number big-text" id="my-score">
+    0
+  </section>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="assets/javascript/game.js"></script>
 </body>
 </html>

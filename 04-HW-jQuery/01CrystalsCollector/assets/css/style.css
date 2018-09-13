@@ -1,3 +1,197 @@
+@import url('https://fonts.googleapis.com/css?family=Arvo|Fira+Sans|Montserrat');
+
+/* 
+font-family: 'Arvo', serif;
+font-family: 'Fira Sans', sans-serif;
+font-family: 'Montserrat', sans-serif;
+*/
+
 * {
-    border: 1px solid grey;
+    /* border: 1px solid grey; */
+    box-sizing: border-box;
+}
+
+body, header, section, p {
+    /* border: 2px solid red; */
+}
+
+body {
+    background-image: url(../images/diamondBlue.jpg);
+    /* opacity: 0.5; */
+}
+
+header {
+    margin: 20px;
+    padding: 30px;
+    width: 50%;
+    border-radius: 8px;
+    background-color: orange;
+}
+
+header h1 {
+    color: white;
+    font-size: 2.5em;
+    font-family: 'Arvo', serif;
+}
+/* 
+main {
+    margin: 20px;
+}
+ */
+section {
+    margin: 20px;
+}
+
+.instructions {
+    background: beige;
+    border-radius: 8px;
+    width: 50%;
+    padding: 20px 0;
+}
+
+.instructions p{
+    color: green;
+    font-family: 'Fira Sans', sans-serif;
+    font-size: 1em;
+    line-height: 1.3em;
+    margin-bottom: 1.5em;
+    padding: 0 20px;
+}
+
+.stats-container{
+    display: flex;
+    justify-content: space-around;
+    width: calc(50% + 40px);
+    /* border: 1px solid red; */
+}
+
+.comp-score-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 8px;
+    background: olivedrab;
+    padding: 1em;
+    width: 45%;
+}
+
+.comp-score {
+    margin: 0;
+    padding: 0;
+    text-shadow: 2px 2px black;
+    color: aliceblue;
+    text-align: center;
+}
+
+.stats {
+    display: flex;
+    justify-content: center;
+    background: aqua;
+    border-radius: 8px;
+    padding: 2em;
+    width: 45%;
+}
+
+.stats table{
+    text-align: center;
+}
+
+.stats td{
+    padding: 0 10px;
+}
+
+.text-right{
+    text-align: right;
+}
+
+.text-left{
+    text-align: left;
+}
+
+.mid-text {
+    font-size: 28px;
+    /* height: 42px;
+    line-height: 42px; */
+}
+
+.big-text{
+    font-size: 42px;
+    /* height: 54px;
+    line-height: 54px; */
+}
+
+/* Image Container */
+.cristals {
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    border-radius: 8px;
+    width: 50%;
+}
+
+/* Image Styles */
+.cristal {
+    height: 100px;
+    /* margin: 20px; */
+    border: 1px solid gray;
+    border-radius: 5px;
+    /* clip: rect(10px, 20px, 30px, 40px); */
+}
+
+.score-message {
+    background: green;
+    color: white;
+    border-radius: 8px;
+    width:  50%;
+    padding: 20px;
+    margin-bottom: 0;
+}
+
+.score-number {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: blue;
+    color: white;
+    border-radius: 8px;
+    width:  50%;
+    padding: 50px;
+    margin-top: 0;
+}
+
+@media screen and (max-width: 750px) {
+
+    header{
+        width: calc(100% - 40px);
+    }
+
+    .instructions{
+        width: calc(100% - 40px);
+    }
+
+    .stats-container{
+        display: flex;
+        flex-direction: column;
+        width: calc(100% - 40px);
+    }
+
+    .comp-score-container {
+        width: 100%;
+    }
+    
+    .stats {
+        width: 100%;
+    }
+
+    .cristals {
+        width: calc(100% - 40px);
+    }
+
+    .score-message {
+        width: calc(100% - 40px);
+    }
+    .score-number {
+        width: calc(100% - 40px);
+    }
+
 }
