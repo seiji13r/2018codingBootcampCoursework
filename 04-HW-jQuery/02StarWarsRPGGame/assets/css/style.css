@@ -1,0 +1,114 @@
+@import url('https://fonts.googleapis.com/css?family=Audiowide|Luckiest+Guy|Montserrat|Orbitron');
+
+/* Google Fonts Installed */
+/* font-family: 'Orbitron', sans-serif; */
+/* font-family: 'Luckiest Guy', cursive; */
+/* font-family: 'Audiowide', cursive; */
+/* font-family: 'Montserrat', sans-serif; */
+
+* {
+    box-sizing: border-box;
+}
+
+body{
+    background: url("../images/xwing_bg2.jpg");
+    /* background-size: auto 1600px; */
+    /* background-repeat:no-repeat; */
+    /* background-size:contain; */
+    background-size: 100% auto;
+    background-position: top;
+    opacity: 1;
+}
+
+header {
+    /* margin-top: 50px; */
+    /* border: 1px solid blue; */
+}
+
+main {
+    width: 90%;
+    margin: 50px auto;
+}
+
+h1 {
+    /* border: 1px solid red; */
+    margin: 20px;
+    padding: 20px;
+    width: auto;
+    height: auto;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 54px;
+    line-height: 54px;
+    text-align: right;
+    text-shadow: 3px 3px black;
+    color: aliceblue;
+    /* line-height: calc(20px + 54px + 20px); */
+}
+
+h2 {
+    /* border: 1px solid red; */
+    margin: 10px;
+    /* padding: 10px; */
+    width: auto;
+    height: auto;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 28px;
+    line-height: 28px;
+    text-align: left;
+    color: black;
+    text-shadow: 1px 1px aliceblue;
+    /* line-height: calc(20px + 54px + 20px); */
+}
+
+section {
+    margin: 0 auto;
+    /* border: 1px solid blue; */
+    padding: 0;
+    /* height: 100px; */
+    /* width:0; */
+}
+
+.characters-holder {
+    display: flex;
+    
+}
+
+button {
+    margin: 20px;
+    width: 100px;
+    height: 30px;
+    border-radius: 10px;
+    font-family: 'Audiowide', cursive;
+    font-size: 14px;
+}
+
+.action-results {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 14px;
+    line-height: 28px;
+    text-align: left;
+}
+
+.character {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: column;
+    border: 5px solid red;
+    /* margin: 20px; */
+    width: 200px;
+    height: 150px; 
+    background: white;
+}
+
+.character span {
+    display: block;
+    font-size: 20px;
+    line-height: 25px;
+    /* margin: 5px; */
+}
+
+.character img {
+    width: 150px;
+    height: 90px;
+}
