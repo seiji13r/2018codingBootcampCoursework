@@ -7,7 +7,7 @@ $(document).ready(function(){
         return Math.floor(Math.random()*(maxNum - minNum + 1) + minNum)
     }
 
-    var computerScore = randNumber(0, 40)
+    var computerScore = 0;
     var wins = 0;
     var losses = 0;
     var myScore = 0;
@@ -18,33 +18,65 @@ $(document).ready(function(){
     var topazValue = 0;
     var emeraldValue = 0;
 
+    // $("#wins").text("wins#")
+    // $("#losses").text("losses#")
 
-    $("#computer-score").text(computerScore)
-    $("#wins").text("wins#")
-    $("#losses").text("losses#")
-    $("#ruby")
-    $("#sapphire")
-    $("#topaz")
-    $("#emerald")
-    $("#my-score").text("myscore")
+    var startGame = function(){
+        computerScore = randNumber(19, 120);
+        myScore = 0;
+        rubyValue = randNumber(1, 12);
+        sapphireValue = randNumber(1, 12);
+        topazValue = randNumber(1, 12);
+        emeraldValue = randNumber(1, 12);
+
+        $("#computer-score").text(computerScore);
+        $("#my-score").text("0");
+    }
 
     // On click Ruby Jewel
     $("#ruby").on('click', function(){
-        console.log($(this));
+        myScore += rubyValue;
+        updateScoreAndCheckResult();
     });
 
     // On click Sapphire Jewel
     $("#sapphire").on('click', function(){
-        console.log($(this));
+        myScore += sapphireValue;
+        updateScoreAndCheckResult();
     });
 
     // On click Topaz Jewel
     $("#topaz").on('click', function(){
-        console.log($(this));
+        myScore += topazValue;
+        updateScoreAndCheckResult();
     });
 
     // On click Emerald Jewel
     $("#emerald").on('click', function(){
-        console.log($(this));
+        myScore += emeraldValue;
+        updateScoreAndCheckResult();
     });
+
+    var updateScoreAndCheckResult = function(){
+        $("#my-score").text(myScore);
+        if(computerScore === myScore){
+            wins ++;
+            $("#wins").text(wins);
+            startGame();
+        }else if(computerScore < myScore){
+            losses++;
+            $("#losses").text(losses);
+            startGame();
+        }else{
+            console.log()
+        }
+    };
+
+    startGame();
+
 });
+
+
+// 1. Create the function that start the Game.
+//      set the computer score: (random number between 19 - 120)
+//      set the jewel values: (random number for each one) 1 -12.
