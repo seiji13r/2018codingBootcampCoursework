@@ -7,6 +7,7 @@ $(document).ready(function(){
         return Math.floor(Math.random()*(maxNum - minNum + 1) + minNum)
     }
 
+    // Global Variables
     var computerScore = 0;
     var wins = 0;
     var losses = 0;
