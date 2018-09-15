@@ -27,13 +27,13 @@ header {
 
 main {
     width: 90%;
-    margin: 50px auto;
+    margin: 20px auto;
 }
 
 h1 {
     /* border: 1px solid red; */
-    margin: 20px;
-    padding: 20px;
+    margin: 20px 20px 0 20px;
+    /* padding: 20px; */
     width: auto;
     height: auto;
     font-family: 'Orbitron', sans-serif;
@@ -43,6 +43,10 @@ h1 {
     text-shadow: 3px 3px black;
     color: aliceblue;
     /* line-height: calc(20px + 54px + 20px); */
+}
+
+.main-title {
+    /* position: fixed; */
 }
 
 h2 {
@@ -68,9 +72,8 @@ section {
     /* width:0; */
 }
 
-.characters-holder {
+.charContainer {
     display: flex;
-    
 }
 
 button {
@@ -94,11 +97,33 @@ button {
     justify-content: space-between;
     align-items: center;
     flex-direction: column;
-    border: 5px solid red;
-    /* margin: 20px; */
+    margin: auto 20px;
     width: 200px;
     height: 150px; 
+}
+
+.char-default{
+    border: 5px solid green;
     background: white;
+    color: black;
+}
+
+.char-mychar{
+    border: 5px solid greenyellow;
+    background: white;
+    color: black;
+}
+
+.char-enemy{
+    border: 5px solid black;
+    background: red;
+    color: white;
+}
+
+.char-defender{
+    border: 5px solid greenyellow;
+    background: black;
+    color: white;
 }
 
 .character span {
@@ -111,4 +136,28 @@ button {
 .character img {
     width: 150px;
     height: 90px;
+}
+
+
+.action-results {
+    font-size: 21px;
+    line-height: 28px;
+}
+
+.msg {
+    display: inline-block;
+    font-size: 28px;
+    line-height: 54px;
+    padding: 10px;
+}
+.msg-highlight {
+    background: yellow;
+}
+
+.msg-lose {
+    background: red;
+}
+
+.msg-win {
+    background: greenyellow;
 }
