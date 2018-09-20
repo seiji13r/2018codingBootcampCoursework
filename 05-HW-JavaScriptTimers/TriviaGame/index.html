@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Title -->
+    <title>Totally Trival Trivia! [Seiji]</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+  </head>
+  <body>
+    
+
+      <header class="container text-center">
+        <!-- Title Container -->
+        <div class="row">
+          <div class="col-md-12 jumbotron">
+            <!-- <div class="jumbotron"> -->
+              <h1 class="title">Totally Trival Trivia!</h1>
+            <!-- </div> -->
+          </div>
+        </div>
+        <!-- Timer Container -->
+        <div class="row">
+          <div class="timer-container text-center" id="timer-container">
+            <span class="time-msg">Time Left: </span> 
+            <span class="time-msg" id="time-counter"></span>
+            <span class="time-msg"> [sec] </span> 
+          </div>
+        </div>
+        <!-- Messages Container -->
+        <div class="row">
+          <div class="col-md-12 msg-container">
+            <div class="msg right-msg bg-success text-light" id="right-msg">
+              <h2>You have it Right!!!</h2>
+            </div>
+            <div class="msg wrong-msg bg-danger text-light" id="wrong-msg">
+              <h2>You have it Wrong!!!</h2>
+              <h5>The Answer is: <span id="c_answer-wr"></span></h5>
+            </div>
+            <div class="msg timeout-msg bg-warning text-black" id="timeout-msg">
+              <h2>Time Out!!!</h2>
+              <h5>The Answer is: <span id="c_answer-to"></span></h5>
+            </div>
+            <button type="button" class="btn btn-primary btn-lg start-game" id="start-game">
+                Start Game
+            </button>
+          </div>
+        </div>
+
+      </header>
+      <section class="container">
+        <!-- Stats Container -->
+        <div class="stats-container" id="stats-container">
+          <table class="table">
+            <tr>
+              <td class="col-md-6 text-right"><strong>Correct Answers:</strong></td>
+              <td class="col-md-6 text-left" id="a_rights"></td>
+            </tr>
+            <tr>
+              <td class="text-right"><strong>Wrong Answers:</strong></td>
+              <td class="col-md-6 text-left" id="a_wrongs"></td>
+            </tr>
+            <tr>
+              <td class="text-right"><strong>Final Grade:</strong></td>
+              <td class="col-md-6 text-left" id="final-grade"></td>
+            </tr>
+          </table>
+        </div>
+        <!-- Instructions Container -->
+        <div class="container instructions-container bg-light" id="instructions-container">
+          <div class="row">
+            <div class="col-sm-12">
+              <h3>Instructions</h3>
+              <p>
+                In Totaly Trivial Game you'll be asked to respond several Multiple Choice Questions. <br>
+                Some of these questions are Trivial and others not so much. <br>
+                You'll be challanged with a 10 second Timer to answer each Question.  <br>
+                If the time is up we'll move to the next Question.
+              </p>
+              <p>Are you ready to start?</p>
+            </div>
+          </div>
+        </div>
+        <!-- Question Container -->
+        <div class="question-container" id="question-container">
+          <h3 class="question-box" id="question-box">
+          </h3>
+          
+          <div class="form-check" id="form-check-0">
+            <input class="form-check-input" type="radio" name="answer-1" id="answer-1" value="">
+            <label class="form-check-label" for="answer-1">
+              Answer 1
+            </label>
+          </div>
+          <div class="form-check" id="form-check-1">
+            <input class="form-check-input" type="radio" name="answer-2" id="answer-2" value="">
+            <label class="form-check-label" for="answer-2">
+                Answer 2
+            </label>
+          </div>
+          <div class="form-check" id="form-check-2">
+            <input class="form-check-input" type="radio" name="answer-3" id="answer-3" value="">
+            <label class="form-check-label" for="answer-3">
+                Answer 3
+            </label>
+          </div>
+          <div class="form-check" id="form-check-3">
+            <input class="form-check-input" type="radio" name="answer-4" id="answer-4" value="">
+            <label class="form-check-label" for="answer-4">
+                Answer 4
+            </label>
+          </div>
+        </div>
+        <!-- Button Container -->
+        <!-- <div class="container button-container" id="button-container">
+          <div class="row">
+            <div class="col-md-12 text-center">
+              <button type="button" class="btn btn-primary btn-lg" id="start-game">
+                Start Game
+              </button>
+            </div>
+          </div>
+        </div> -->
+
+      </section>
+      <footer>
+    
+      </footer>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+    <!-- Game JavaScript -->
+    <script type="text/javascript" src="assets/javascript/questions.js"></script>
+    <script type="text/javascript" src="assets/javascript/app.js"></script>
+  </body>
+</html>
