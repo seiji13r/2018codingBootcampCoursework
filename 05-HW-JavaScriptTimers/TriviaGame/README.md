@@ -1,8 +1,14 @@
-# Trivia
+# Totally Trivial Trivia
+## Game Instructions
+In Totally Trivial Game you'll be asked to respond several Multiple Choice Questions. 
+Some of these questions are Trivial and others not so much. 
+You'll be challanged with a 10 second Timer to answer each Question. 
+If the time is up we'll move to the next Question.
 
 ## Technical Notes
+### Overview
 
-## Shuffle arrays
+### Shuffle arrays
 https://stackoverflow.com/questions/2450954/how-to-randomize-shuffle-a-javascript-array
 
 ### Durstenfeld Shuffle

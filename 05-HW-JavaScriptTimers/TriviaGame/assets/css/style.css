@@ -1,9 +1,28 @@
+@import url('https://fonts.googleapis.com/css?family=Gloria+Hallelujah|Luckiest+Guy|Merienda|Notable|Permanent+Marker');
+
+/* 
+font-family: 'Gloria Hallelujah', cursive;
+font-family: 'Merienda', cursive;
+font-family: 'Permanent Marker', cursive;
+font-family: 'Luckiest Guy', cursive;
+font-family: 'Notable', sans-serif; 
+*/
+
 body{
-    background: url(../images/background.jpg)
+    /* background: url(../images/background.jpg); */
+    background: url(https://picsum.photos/1600/1200/?random);
 }
 
 header{
     margin-top: 30px;
+}
+
+.title{
+    /* font-family: 'Gloria Hallelujah', cursive; */
+    /* font-family: 'Merienda', cursive; */
+    /* font-family: 'Permanent Marker', cursive; */
+    font-family: 'Luckiest Guy', cursive;
+    /* font-family: 'Notable', sans-serif;  */
 }
 
 td {
@@ -36,7 +55,7 @@ td {
 
 .msg-container{
     height: 120px;
-    width: 80%;
+    width: 70%;
     margin: 0 auto;
     margin-bottom: 10px;
     border-radius: 10px;
@@ -53,13 +72,13 @@ td {
     height: 42px;
     background-color: aliceblue;
     border-radius: 10px;
-    width: 50%;
+    width: 70%;
     margin: 0 auto 10px auto;
     color: red;
 }
 
 .question-container{
-    width: 50%;
+    width: 70%;
     margin: 0 auto;
     background-color: aliceblue;
     padding: 20px;
@@ -70,4 +89,17 @@ td {
 
 .start-game {
     margin-top: 30px;
+}
+
+@media (max-width: 768px) {
+    body{
+    /* background: url(../images/background.jpg); */
+    background: url(https://picsum.photos/800/600/?random);   
+    }
+    
+    .timer-container,
+    .msg-container,
+    .question-container{
+        width: 90%;        
+    }
 }
