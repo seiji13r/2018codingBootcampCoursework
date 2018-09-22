@@ -1,0 +1,12 @@
+button {
+    /* width: 80px !important; */
+    /* text-overflow: ellipsis; */
+}
+
+.btn-wrap-text {
+    width: 120px !important;
+    overflow: hidden;
+    /* white-space: nowrap; */
+    /* display: inline-block; */
+    text-overflow: ellipsis;
+}
