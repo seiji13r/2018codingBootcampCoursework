@@ -2,6 +2,7 @@ console.log("GifTastic")
 
 // This variable contains the name of the Buttons
 let topics = [
+    'zim invader',
     'futurama',
     'scooby doo',
     'adventure time',
@@ -9,7 +10,6 @@ let topics = [
     'powerpuff girs',
     'the pink panther',
     'looney toons',
-    'the flinstones',
     'gravity falls',
     'disenchantment',
     "rocko's modern life",
