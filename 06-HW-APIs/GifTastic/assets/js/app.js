@@ -31,10 +31,26 @@ let createImage = function(downsized_still, downsized){
     // downsized_still
     image.attr("src", downsized_still);
     image.attr("data-still", downsized_still);
-    image.attr("data-animated", downsized);
+    image.attr("data-animate", downsized);
     image.attr("data-state", "still");
     image.appendTo(imgDiv)
     return imgDiv;
+}
+
+let animateControlImage = function(){
+    console.log("Image Clicked");
+    var state = $(this).attr('data-state');
+    console.log(state);
+
+    if( state === "still"){
+      var animateValue = $(this).attr('data-animate');
+      $(this).attr('src', animateValue);
+      $(this).attr('data-state', "animate");
+    }else if( state === "animate"){
+      var stillValue = $(this).attr('data-still');
+      $(this).attr('src', stillValue);
+      $(this).attr('data-state', "still");
+    };
 }
 
 let displayButtons = function(arr){
@@ -54,10 +70,18 @@ let ajaxRequestToGify = function(topicName){
     // console.log(topicName);
     let myApiKey = "kxCW1k4IZQ9cnoj6U4RkIeWswUDg3OUt";
     let queryURL = "https://api.giphy.com/v1/gifs/search?q=" + topicName + "&limit=" + maxRecords + "&api_key=" + myApiKey;
-    $.ajax({
+    
+    let request = $.ajax({
         url: queryURL,
         method: "GET",
-    }).done(function(response){
+        // statusCode: {
+        //     429: function() {
+        //         alert( "Too much Requests" );
+        //     }
+        // }
+    })
+    
+    request.done(function(response){
         // console.log(response);
         gifs = response.data;
         let img;
@@ -72,6 +96,17 @@ let ajaxRequestToGify = function(topicName){
             // console.log(img)
             $("#image-container").append(img);
         };
+    });
+    
+    request.fail(function( jqXHR, textStatus ) {
+        $("#image-container").empty();
+        msg = "jQuery Request Failed\n" + "<br>" +
+            "Request failed: " + textStatus
+        console.log(msg);
+        // alert(msg);
+        let msgDiv = $('<div class="jumbotron bg-danger text-light">').html("<h1>" + msg + "</h1>");
+        $("#image-container").append(msgDiv);
+
     });
 }
 
@@ -111,6 +146,8 @@ let addTopicButton = function(event){
 $(document).on("click", "#add-topic-button", addTopicButton);
 // Adding click event listeners to all elements with a class of "topic-button"
 $(document).on("click", ".topic-button", displayTopicGif);
+// Adding click event listeners to 
+$(document).on("click", ".my-img-class", animateControlImage);
 
 $( document ).ready(function() {
     // console.log( "ready!" );
