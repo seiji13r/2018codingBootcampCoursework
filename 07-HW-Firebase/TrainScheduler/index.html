@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <title>Train Scheduler [Seiji]</title>
+  </head>
+  <body>
+
+    <!-- Main Section And App Container-->
+    <main class="container">
+      <!-- App Jumbotron Title -->
+      <div class="jumbotron bg-dark text-light text-center">
+          <h1>Train Scheduler App</h1>
+          <h4>Choo Choo. Chee Chee</h4>
+      </div>
+      <!-- Current Train Schedule Section -->
+      <section class="card border-primary">
+        <div class="card-header text-light bg-primary">
+            Current Train Schedule Section
+        </div>
+        <div class="card-body">
+          <small>
+            <table class="table" id="schedule-table">
+              <tr>
+                <th>Train Name</th>
+                <th>Destination</th>
+                <th>First Train Time</th>
+                <th>Frequency [min]</th>
+                <th>Next Arrival</th>
+                <th>Minutes Away</th>
+              </tr>
+              <tr></tr>
+              <tr></tr>
+            </table>
+          </small>
+        </div>
+      </section>
+      <!-- Ends Current Train Schedule Section -->
+      <br>
+      <!-- Add Train Section-->
+      <section class="card border-primary">
+        <div class="card-header text-light bg-primary">
+            Add Train Section
+        </div>
+        <div class="card-body">
+          <small>
+            <form role="form" action="">
+              <!--
+              Form Text Input Element Template
+              <div class="form-group">
+                <label for=""></label>
+                <input type="text" class="form-control form-control-sm" id="" placeholder="">
+              </div>
+              -->
+              <div class="form-group">
+                <label for="input-train-name">Train Name</label>
+                <input type="text" class="form-control form-control-sm" id="input-train-name" placeholder="Train Name...">
+                <span class="text-danger" id="msg-train-name"></span>
+              </div>
+              <div class="form-group">
+                <label for="input-destination">Destination</label>
+                <input type="text" class="form-control form-control-sm" id="input-destination" placeholder="Destination...">
+                <span class="text-danger" id="msg-destination"></span>
+              </div>
+              <div class="form-group">
+                <label for="input-first-train-time">First Train Time (HH:mm - military time)</label>
+                <input type="text" class="form-control form-control-sm" id="input-first-train-time" placeholder="HH:mm">
+                <span class="text-danger" id="msg-first-train-time"></span>
+              </div>
+              <div class="form-group">
+                <label for="input-frequency">Frequency (min) [1 to 1440]</label>
+                <input type="text" class="form-control form-control-sm" id="input-frequency" placeholder="Frequency (min)">
+                <span class="text-danger" id="msg-frequency"></span>
+              </div>
+
+              <button class="btn btn-primary" id="add-train" type="submit">Submit</button>
+            </form>
+          </small>
+        </div>
+      </section>
+    </main>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+    <!-- Firebase JS Library-->
+    <script src="https://www.gstatic.com/firebasejs/5.5.3/firebase.js"></script>
+    <!-- MomentJS Library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment.min.js"></script>
+    <!-- Custom App -->
+    <script src="assets/javascript/app.js"></script>
+  </body>
+</html>
