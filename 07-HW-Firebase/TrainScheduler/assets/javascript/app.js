@@ -187,6 +187,26 @@ let clearInputs = function(){
     frequencyInput.val("");
 };
 
+// Moment JS Functions
+let nextArrivalFunction = function(firstTime, tFrequency){
+    
+    let firstTimeConverted = moment(firstTime, "HH:mm").subtract(1, "years");
+    let diffTime = moment().diff(moment(firstTimeConverted), "minutes");
+    let tRemainder = diffTime % tFrequency;
+    let tMinutesTillTrain = tFrequency - tRemainder;
+    let nextTrain = moment().add(tMinutesTillTrain, "minutes");
+    
+    return moment(nextTrain).format("HH:mm");
+};
+
+let minutesAwayFunction = function(firstTime, tFrequency){
+    let firstTimeConverted = moment(firstTime, "HH:mm").subtract(1, "years");
+    let diffTime = moment().diff(moment(firstTimeConverted), "minutes");
+    let tRemainder = diffTime % tFrequency;
+    let tMinutesTillTrain = tFrequency - tRemainder;
+    
+    return tMinutesTillTrain;
+};
 
 // Firebase watcher .on("child_added"
 database.ref().on("child_added", function(snapshot) {
@@ -197,6 +217,11 @@ database.ref().on("child_added", function(snapshot) {
     // frequency : frequencyInput.val().trim(),
     // dateAdded: firebase.database.ServerValue.TIMESTAMP
 
+    let firstTrainTime = snapshot.val().firstTrainTime;
+    let frequency = snapshot.val().frequency;
+    let nextArrival = nextArrivalFunction(firstTrainTime, frequency);
+    let minutesAway = minutesAwayFunction(firstTrainTime, frequency);
+    
     let row = $('<tr id="' + snapshot.key + '">');
     row.addClass("row-class");
     let trainNameTd = $("<td>");
@@ -206,20 +231,20 @@ database.ref().on("child_added", function(snapshot) {
     destinationTd.text(snapshot.val().destination);
 
     let firstTrainTimeTd = $("<td>");
-    firstTrainTimeTd.text(snapshot.val().firstTrainTime);
+    firstTrainTimeTd.text(firstTrainTime);
 
     let frequencyTd = $("<td>");
-    frequencyTd.text(snapshot.val().frequency);
+    frequencyTd.text(frequency);
 
     let nextArrivalTd = $("<td>");
-    nextArrivalTd.text("Next Arrival Calculation");
+    nextArrivalTd.text(nextArrival);
 
     let minutesAwayTd = $("<td>");
-    minutesAwayTd.text("Minutes Away Calculation");
+    minutesAwayTd.text(minutesAway);
 
     let buttonTd = $("<td>");
-    buttonRemove = $('<button class="btn btn-sm btn-danger btn-remove" data-key="' + snapshot.key + '">')
-    buttonRemove.text("X")
+    buttonRemove = $('<button class="btn btn-sm btn-danger btn-remove" data-key="' + snapshot.key + '">');
+    buttonRemove.html("<span>&times;</span>");
     buttonTd.append(buttonRemove);
  
     console.log()
@@ -262,6 +287,9 @@ $(document).on("click", ".btn-remove", deleteRecord);
 
 let populateDB = function(){
 
+    // REMOVE ALL THE DB
+    database.ref().remove()
+
     let records = [
         // {
         //     trainName : "",
@@ -270,55 +298,62 @@ let populateDB = function(){
         //     frequency : "",
         //     dateAdded: firebase.database.ServerValue.TIMESTAMP
         // },
-        // {
-        //     trainName : "",
-        //     destination : "",
-        //     firstTrainTime : "",
-        //     frequency : "",
-        //     dateAdded: firebase.database.ServerValue.TIMESTAMP
-        // },
-        // {
-        //     trainName : "",
-        //     destination : "",
-        //     firstTrainTime : "",
-        //     frequency : "",
-        //     dateAdded: firebase.database.ServerValue.TIMESTAMP
-        // },
-        // {
-        //     trainName : "",
-        //     destination : "",
-        //     firstTrainTime : "",
-        //     frequency : "",
-        //     dateAdded: firebase.database.ServerValue.TIMESTAMP
-        // },
-        // {
-        //     trainName : "",
-        //     destination : "",
-        //     firstTrainTime : "",
-        //     frequency : "",
-        //     dateAdded: firebase.database.ServerValue.TIMESTAMP
-        // },
-        // {
-        //     trainName : "",
-        //     destination : "",
-        //     firstTrainTime : "",
-        //     frequency : "",
-        //     dateAdded: firebase.database.ServerValue.TIMESTAMP
-        // },
-        // {
-        //     trainName : "",
-        //     destination : "",
-        //     firstTrainTime : "",
-        //     frequency : "",
-        //     dateAdded: firebase.database.ServerValue.TIMESTAMP
-        // },
-        // {
-        //     trainName : "",
-        //     destination : "",
-        //     firstTrainTime : "",
-        //     frequency : "",
-        //     dateAdded: firebase.database.ServerValue.TIMESTAMP
-        // },
+        {
+            trainName : "North Train",
+            destination : "Monterrey",
+            firstTrainTime : "6:00",
+            frequency : "60",
+            dateAdded: firebase.database.ServerValue.TIMESTAMP
+        },
+        {
+            trainName : "J. J.",
+            destination : "Guadalajara",
+            firstTrainTime : "19:15",
+            frequency : "15",
+            dateAdded: firebase.database.ServerValue.TIMESTAMP
+        },
+        {
+            trainName : "Chilango",
+            destination : "CDMX",
+            firstTrainTime : "7:00",
+            frequency : "13",
+            dateAdded: firebase.database.ServerValue.TIMESTAMP
+        },
+        {
+            trainName : "LIGHTNING",
+            destination : "Neverland",
+            firstTrainTime : "4:50",
+            frequency : "5",
+            dateAdded: firebase.database.ServerValue.TIMESTAMP
+        },
+        {   
+            trainName : "Super Train",
+            destination : "Xochimilco",
+            firstTrainTime : "23:30",
+            frequency : "21",
+            dateAdded: firebase.database.ServerValue.TIMESTAMP
+        },
+        {
+            trainName : "Cool Train",
+            destination : "Cool Place",
+            firstTrainTime : "5:00",
+            frequency : "20",
+            dateAdded: firebase.database.ServerValue.TIMESTAMP
+        },
+        {
+            trainName : "Choo Choo",
+            destination : "Dinsneyland",
+            firstTrainTime : "3:00",
+            frequency : "35",
+            dateAdded: firebase.database.ServerValue.TIMESTAMP
+        },
+        {
+            trainName : "Krusty",
+            destination : "Springfield",
+            firstTrainTime : "23:59",
+            frequency : "2",
+            dateAdded: firebase.database.ServerValue.TIMESTAMP
+        },
         {
             trainName : "Expreso de Oriente",
             destination : "Puebla",
@@ -330,7 +365,7 @@ let populateDB = function(){
             trainName : "Futura",
             destination : "Queretaro",
             firstTrainTime : "12:15",
-            frequency : "240",
+            frequency : "24",
             dateAdded: firebase.database.ServerValue.TIMESTAMP
         },
     ];
@@ -341,8 +376,6 @@ let populateDB = function(){
         // console.log(records[i]);
         database.ref().push(records[i]);
     }
-
-    // database.ref().remove()
 }
 
   
