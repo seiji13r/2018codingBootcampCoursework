@@ -1,0 +1,26 @@
+{
+  "name": "liri-node-app",
+  "version": "1.0.0",
+  "description": "Liri App will retrieve information from Songs and Movies via command line.",
+  "main": "liri.js",
+  "scripts": {
+    "test": "node liri.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "GIT Repo"
+  },
+  "keywords": [
+    "Node",
+    "CommandLine",
+    "Sprotify"
+  ],
+  "author": "Seiji Osada",
+  "license": "MIT",
+  "dependencies": {
+    "dotenv": "^6.1.0",
+    "moment": "^2.22.2",
+    "node-spotify-api": "^1.0.7",
+    "request": "^2.88.0"
+  }
+}
