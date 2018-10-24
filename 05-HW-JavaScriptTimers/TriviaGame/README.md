@@ -1,4 +1,7 @@
 # Totally Trivial Trivia
+
+[Live Demo "https://seiji13r.github.io/2018codingBootcampCoursework/05-HW-JavaScriptTimers/TriviaGame/"](https://seiji13r.github.io/2018codingBootcampCoursework/05-HW-JavaScriptTimers/TriviaGame/)
+
 ## Game Instructions
 In Totally Trivial Game you'll be asked to respond several Multiple Choice Questions. 
 Some of these questions are Trivial and others not so much. 
