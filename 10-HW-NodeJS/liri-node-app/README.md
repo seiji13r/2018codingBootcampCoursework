@@ -13,6 +13,10 @@ liri app has the following 4 command options:
 * movie-this
 * do-what-it-says
 
+When Concert This command is incomplete the output will Warn that situation.
+When Spotify-This command is incomplete the output will be the info from the song "The Sign" of Ace of Base.
+When Movie-This command is incomplete the output will be the info from the Movie "Mr. Nobody".
+
 # Requirements
 
 * Node JS Installed in the Server or Personal Computer

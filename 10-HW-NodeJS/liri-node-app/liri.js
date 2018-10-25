@@ -3,11 +3,20 @@
 
 // Load the "dotenv" package to make .env info readable.
 require("dotenv").config();
+
+// Load fs
+var fs = require("fs");
+
+// Load Moment
+var moment = require('moment');
+moment().format();
+
 // Load the Keys from keys.js this way we can access them with:
 // keys.spotify
 // keys.omdb
 // keys.bandsintown
 var keys = require("./keys.js")
+
 // Initialize the Request Module.
 var request = require('request');
 
@@ -51,92 +60,190 @@ if (process.argv[3]){
   cmdArgString = process.argv.slice(3).join(" ");
 };
 
-console.log("Command is: ",cmd)
-console.log("CMD Sring", cmdArgString);
-console.log("");
-
-// Rise the valid Inputs flag if the Command Line Inputs are correct.
-if ((cmd !== undefined) && (commands.includes(cmd))){
-  validInputs = true;
-};
+// Debugging Console Logs
+// console.log("Command is: ",cmd)
+// console.log("CMD Sring", cmdArgString);
+// console.log("");
 
 // Functions Definition Starts Here
 // concertThis Uses Bands in town it retrieves the Events of a given Artist
 function concertThis(key, artist){
-  let entryUrl = "https://rest.bandsintown.com/artists/" + artist + "/events?app_id=" + key
+  
+  let formatedOutput = ""
 
-  request(entryUrl, function (error, response, body) {
-    console.log('error:', error); // Print the error if one occurred
-    console.log('statusCode:', response && response.statusCode); // Print the response status code if a response was received
-    console.log('body:', body); // Print the HTML for the Google homepage.
-  });
+  if (artist===undefined){
+    console.log("Command Incomplete!!")
+  }
+  else{
+    let entryUrl = "https://rest.bandsintown.com/artists/" + artist.replace(/ /g, "+") + "/events?app_id=" + key
+    // console.log(entryUrl)
+    request(entryUrl, function (error, response, body) {
+      if(error===null){
+        let data = [];
+        try{
+          data = JSON.parse(body);
+        } catch (e){
+          console.log("API response error for", artist, ": ", body);
+        }
+        
+        if(data.length===0){
+          formatedOutput += "\nNo Near Events Found for " + artist + "\n";
+        }
+        
+        for (let i = 0;i < data.length; i++ ){
+          
+          if(formatedOutput!==""){
+            formatedOutput += "\n";
+          }
+          
+          formatedOutput += "Name of the Venue: " + data[i].venue.name +
+          "\nVenue Location: "  + data[i].venue.city + ", " + data[i].venue.country +
+          "\nDate of the Event: "  + moment(data[i].datetime).format("MM/DD/YYYY") + "\n";
+          
+          // Test the Date Time Format output with Moment JS
+          // console.log(moment(data[i].datetime));
+          // console.log(moment(data[i].datetime).format("MM/DD/YYYY"));
+        }
+        console.log(formatedOutput);
+        
+      } else {
+        formatedOutput = "Something Went Wrong!!!!!!\n" +
+        JSON.stringify(error) + "\nRequest Status Code:" + response.statusCode + "\n";
+        
+        console.log(formatedOutput)
+      }
+    });
+  }
+  
+  return formatedOutput;
 
-  // let events;
-  // return events;
 };
 
 // spotifyThisSong Uses the Spotify API to retrieve information from a given Song
 function spotifyThisSong(song){
-  let info;
-  return info;
+  let formatedOutput = ""
+  let myDefault = false;
+  if(song===undefined){
+    song = "The Sign";
+    myDefault = true;
+  }
+
+  spotify.search({ type: 'track', query: song }, function(err, data) {
+    if (err) {
+      formatedOutput = 'Error occurred: ' + err;
+      return console.log(formatedOutput);
+    } else {
+      formatedOutput = ""
+      if(myDefault){
+        let currentSong = data.tracks.items[7];
+        formatedOutput += "\n\nArtist(s): " + currentSong.artists[0].name;
+        formatedOutput += "\nSong's Name: " + currentSong.name;
+        formatedOutput += "\nSong's Link @ Spotify: " + currentSong.external_urls.spotify;
+        formatedOutput += "\nAlbum Name: " + currentSong.album.name;
+      }
+      else{
+        for (let i = 0; i < data.tracks.items.length; i++){
+          let currentSong = data.tracks.items[i];
+          let artistsStr = ""
+          for (let i = 0; i < currentSong.artists.length; i++){
+            if (i!==0){
+              artistsStr += ", " + currentSong.artists[i].name;
+            } else{
+              artistsStr = currentSong.artists[i].name;
+            }
+          }
+
+          formatedOutput += "\n\nArtist(s): " + artistsStr;
+          formatedOutput += "\nSong's Name: " + currentSong.name;
+          formatedOutput += "\nSong's Link @ Spotify: " + currentSong.external_urls.spotify;
+          formatedOutput += "\nAlbum Name: " + currentSong.album.name;
+        }
+      }
+    }
+
+    console.log(formatedOutput);
+    return formatedOutput;
+
+  });
+
 }
 
 // movieThis Uses the OMBD API to retrieve information from a given Movie
 function movieThis(key, movie){
-  let entryUrl = "https://www.omdbapi.com/?t=" + movie + "&plot=short&apikey=" + key;
+  let formatedOutput = "";
+  if (movie === undefined){
+    movie = "Mr. Nobody.";
+  }
 
+  let entryUrl = "https://www.omdbapi.com/?t=" + movie.replace(/ /g, "+") + "&plot=short&apikey=" + key;
+  console.log(entryUrl);
   request(entryUrl, function (error, response, body) {
-    console.log('error:', error); // Print the error if one occurred
-    console.log('statusCode:', response && response.statusCode); // Print the response status code if a response was received
-    console.log('body:', body); // Print the HTML for the Google homepage.
+    if(error===null){
+      let data = [];
+      try{
+        data = JSON.parse(body);
+      } catch (e){
+        console.log("API response error for", movie, ": ", body);
+      }
+
+      let rotTomRat="";
+      if(data.Ratings){
+        for(let i = 0; i < data.Ratings.length; i++){
+          if (data.Ratings[i].Source==='Rotten Tomatoes'){
+            rotTomRat = data.Ratings[i].Value;
+          }
+        }
+      }
+
+      // console.log(data);
+      formatedOutput += "\nMovie Title: " + data.Title;
+      formatedOutput += "\nYear Released: " + data.Year;
+      formatedOutput += "\nIMDB Rating: " + data.imdbRating;
+      formatedOutput += "\nRotten Tomatoes Rating: " + rotTomRat;
+      formatedOutput += "\nProduction Country: " + data.Country;
+      formatedOutput += "\nLanguage: " + data.Language;
+      formatedOutput += "\nPlot: " + data.Plot;
+      formatedOutput += "\nActors: " + data.Actors;
+
+      console.log(formatedOutput);
+      // * Title of the movie.
+      // * Year the movie came out.
+      // * IMDB Rating of the movie.
+      // * Rotten Tomatoes Rating of the movie.
+      // * Country where the movie was produced.
+      // * Language of the movie.
+      // * Plot of the movie.
+      // * Actors in the movie.
+
+    } else {
+      formatedOutput = "Something Went Wrong!!!!!!\n" +
+      JSON.stringify(error) + "\nRequest Status Code:" + response.statusCode + "\n";
+      console.log(formatedOutput)
+    }
   });
 
-  let info;
-  return info;
+  // // Then we print out the imdbRating
+    // console.log("The movie's rating is: " + JSON.parse(body).imdbRating);
+
 }
 
-if (validInputs){
-  switch(cmd){
-    case "concert-this":
-    // Code
-    console.log("Typed concert-this with: ", cmdArgString, "\n");
-    concertThis(keys.bandsintown, cmdArgString);
-    break;
+function doWhatItSays(){
+  fs.readFile("random.txt", "utf8", function(error, data) {
 
-    case "spotify-this-song":
-    // Code
-    console.log("Typed spotify-this-song with: ", cmdArgString, "\n");
-    spotifyThisSong(cmdArgString);
-    break;
-
-    case "movie-this":
-    // Code
-    console.log("Typed movie-this with:", cmdArgString, "\n");
-    if (cmdArgString === undefined){
-      cmdArgString = "Mr. Nobody.";
+    // If the code experiences any errors it will log the error to the console.
+    if (error) {
+      return console.log(error);
     }
-    movieThis(keys.ombd, cmdArgString);;
-    break;
+  
+    // Then split it by commas (to make it more readable)
+    var commandsInFile = data.split(",");
+  
+    // We will then re-display the content as an array for later use.
+    console.log(commandsInFile);
 
-    case "do-what-it-says":
-    // Code
-    console.log("Typed do-what-it-says with: ", cmdArgString, "\n");
-    break;
-
-    case "help":
-    // Code
-    Help();
-    break;
-
-    default:
-    // Code
-  }
-} else {
-  // Not Valid Inputs - Display Help
-  // Print Help
-  console.log("Something Went Wrong!!");
-  console.log("")
-  Help();
+    // Call Liri again with the commands
+    liriMain(commandsInFile[0], commandsInFile[1]);
+  });
 }
 
 // Help Function Definition
@@ -148,3 +255,53 @@ function Help(){
   }
   console.log("");
 }
+
+function liriMain(cmd, cmdArgString){
+  // Rise the valid Inputs flag if the Command Line Inputs are correct.
+  if ((cmd !== undefined) && (commands.includes(cmd))){
+    validInputs = true;
+  };
+
+  if (validInputs){
+    switch(cmd){
+      case "concert-this":
+      // Code
+      console.log("Typed concert-this with: ", cmdArgString, "\n");
+      concertThis(keys.bandsintown, cmdArgString);
+      break;
+
+      case "spotify-this-song":
+      // Code
+      console.log("Typed spotify-this-song with: ", cmdArgString, "\n");
+      spotifyThisSong(cmdArgString);
+      break;
+
+      case "movie-this":
+      // Code
+      console.log("Typed movie-this with:", cmdArgString, "\n");
+      movieThis(keys.ombd, cmdArgString);;
+      break;
+
+      case "do-what-it-says":
+      // Code
+      console.log("Typed do-what-it-says with: ", cmdArgString, "\n");
+      doWhatItSays();
+      break;
+
+      case "help":
+      // Code
+      Help();
+      break;
+
+      default:
+      // Code
+    }
+  } else {
+    // Not Valid Inputs - Display Help
+    // Print Help
+    console.log("\nSomething Went Wrong!!\n");
+    Help();
+  }
+}
+
+liriMain(cmd, cmdArgString);
