@@ -105,18 +105,17 @@ function concertThis(key, artist){
           // console.log(moment(data[i].datetime).format("MM/DD/YYYY"));
         }
         console.log(formatedOutput);
+        logIt(formatedOutput);
         
       } else {
         formatedOutput = "Something Went Wrong!!!!!!\n" +
         JSON.stringify(error) + "\nRequest Status Code:" + response.statusCode + "\n";
         
         console.log(formatedOutput)
+        logIt(formatedOutput);
       }
     });
   }
-  
-  return formatedOutput;
-
 };
 
 // spotifyThisSong Uses the Spotify API to retrieve information from a given Song
@@ -131,15 +130,16 @@ function spotifyThisSong(song){
   spotify.search({ type: 'track', query: song }, function(err, data) {
     if (err) {
       formatedOutput = 'Error occurred: ' + err;
+      logIt(formatedOutput);
       return console.log(formatedOutput);
     } else {
       formatedOutput = ""
       if(myDefault){
         let currentSong = data.tracks.items[7];
-        formatedOutput += "\n\nArtist(s): " + currentSong.artists[0].name;
+        formatedOutput += "\nArtist(s): " + currentSong.artists[0].name;
         formatedOutput += "\nSong's Name: " + currentSong.name;
         formatedOutput += "\nSong's Link @ Spotify: " + currentSong.external_urls.spotify;
-        formatedOutput += "\nAlbum Name: " + currentSong.album.name;
+        formatedOutput += "\nAlbum Name: " + currentSong.album.name + "\n";
       }
       else{
         for (let i = 0; i < data.tracks.items.length; i++){
@@ -153,19 +153,17 @@ function spotifyThisSong(song){
             }
           }
 
-          formatedOutput += "\n\nArtist(s): " + artistsStr;
+          formatedOutput += "\nArtist(s): " + artistsStr;
           formatedOutput += "\nSong's Name: " + currentSong.name;
           formatedOutput += "\nSong's Link @ Spotify: " + currentSong.external_urls.spotify;
-          formatedOutput += "\nAlbum Name: " + currentSong.album.name;
+          formatedOutput += "\nAlbum Name: " + currentSong.album.name + "\n";
         }
       }
     }
 
     console.log(formatedOutput);
-    return formatedOutput;
-
+    logIt(formatedOutput);
   });
-
 }
 
 // movieThis Uses the OMBD API to retrieve information from a given Movie
@@ -176,14 +174,16 @@ function movieThis(key, movie){
   }
 
   let entryUrl = "https://www.omdbapi.com/?t=" + movie.replace(/ /g, "+") + "&plot=short&apikey=" + key;
-  console.log(entryUrl);
+  // console.log(entryUrl);
   request(entryUrl, function (error, response, body) {
     if(error===null){
       let data = [];
       try{
         data = JSON.parse(body);
       } catch (e){
-        console.log("API response error for", movie, ": ", body);
+        formatedOutput = "API response error for" + movie, ": " + body;
+        console.log(formatedOutput);
+        logIt(formatedOutput);
       }
 
       let rotTomRat="";
@@ -203,9 +203,10 @@ function movieThis(key, movie){
       formatedOutput += "\nProduction Country: " + data.Country;
       formatedOutput += "\nLanguage: " + data.Language;
       formatedOutput += "\nPlot: " + data.Plot;
-      formatedOutput += "\nActors: " + data.Actors;
+      formatedOutput += "\nActors: " + data.Actors + "\n";
 
       console.log(formatedOutput);
+      logIt(formatedOutput);
       // * Title of the movie.
       // * Year the movie came out.
       // * IMDB Rating of the movie.
@@ -219,6 +220,7 @@ function movieThis(key, movie){
       formatedOutput = "Something Went Wrong!!!!!!\n" +
       JSON.stringify(error) + "\nRequest Status Code:" + response.statusCode + "\n";
       console.log(formatedOutput)
+      logIt(formatedOutput);
     }
   });
 
@@ -236,25 +238,48 @@ function doWhatItSays(){
     }
   
     // Then split it by commas (to make it more readable)
-    var commandsInFile = data.split(",");
+    var cmdInFile = data.split("\n");
+    // console.log(cmdInFile);
+
+    // Then split it by commas (to make it more readable)
+    var randPos = Math.floor(Math.random()*cmdInFile.length);
+    var randCommand = cmdInFile[randPos].split(",");
   
     // We will then re-display the content as an array for later use.
-    console.log(commandsInFile);
+    // console.log(randCommand);
 
     // Call Liri again with the commands
-    liriMain(commandsInFile[0], commandsInFile[1]);
+    console.log("\nnode liri", randCommand[0].trim(), randCommand[1].trim());
+    liriMain(randCommand[0].trim(), randCommand[1].trim());
   });
 }
 
 // Help Function Definition
 function Help(){
-  console.log("Use Any of the following Valid Commands:");
-  console.log("");
+  let formatedOutput = "\nUse Any of the following Valid Commands:\n\n";
+
   for (i = 0; i < commands.length; i++){
-    console.log("  -  node liri", commands[i], user_input_opts[i]);
+    formatedOutput += "  -  node liri " + commands[i] + " " + user_input_opts[i] + "\n";
   }
-  console.log("");
+  console.log(formatedOutput);
+  logIt(formatedOutput);
 }
+
+function logIt(text){
+  fs.appendFile("log.txt", text, function(err) {
+
+    // If an error was experienced we will log it.
+    if (err) {
+      console.log("COMMAND NOT LOGGED!");
+      console.log(err);
+    }
+    // If no error is experienced, we'll log the phrase "Content Added" to our node console.
+    else {
+      console.log("COMMAND LOGGED!");
+    }
+  });
+}
+
 
 function liriMain(cmd, cmdArgString){
   // Rise the valid Inputs flag if the Command Line Inputs are correct.
@@ -265,31 +290,29 @@ function liriMain(cmd, cmdArgString){
   if (validInputs){
     switch(cmd){
       case "concert-this":
-      // Code
-      console.log("Typed concert-this with: ", cmdArgString, "\n");
+      logIt("\nnode liri concert-this " + cmdArgString + "\n");
       concertThis(keys.bandsintown, cmdArgString);
       break;
 
       case "spotify-this-song":
       // Code
-      console.log("Typed spotify-this-song with: ", cmdArgString, "\n");
+      logIt("\nnode liri spotify-this-song " + cmdArgString + "\n");
       spotifyThisSong(cmdArgString);
       break;
 
       case "movie-this":
-      // Code
-      console.log("Typed movie-this with:", cmdArgString, "\n");
+      logIt("\nnode liri movie-this " + cmdArgString + "\n");
       movieThis(keys.ombd, cmdArgString);;
       break;
 
       case "do-what-it-says":
       // Code
-      console.log("Typed do-what-it-says with: ", cmdArgString, "\n");
+      logIt("\nnode liri do-what-it-says\n");
       doWhatItSays();
       break;
 
       case "help":
-      // Code
+      logIt("\nnode liri help\n");
       Help();
       break;
 
@@ -300,6 +323,7 @@ function liriMain(cmd, cmdArgString){
     // Not Valid Inputs - Display Help
     // Print Help
     console.log("\nSomething Went Wrong!!\n");
+    logIt("\nSomething Went Wrong!!\n");
     Help();
   }
 }

@@ -1,1 +1,8 @@
 spotify-this-song,"I Want it That Way"
+movie-this, "coco"
+concert-this, Jamiroquai
+spotify-this-song,"Doom & Gloom"
+movie-this, "Ant-man"
+concert-this, Lenny Kravitz
+spotify-this-song,"Fly me to the moon"
+movie-this, "Star Wars"
