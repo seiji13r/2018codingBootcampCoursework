@@ -5,6 +5,12 @@ LIRI is like iPhone's SIRI. However, while SIRI is a Speech Interpretation and R
 
 LIRI is a command line NodeJS Application that takes in typed parameters and gives you back data.
 
+TABLE OF CONTENTS
+* [Usage](#usage)
+* [Usage Demo](#usage-demo)
+* [Requirements](#requirements)
+* [Installation](#installation)
+
 # Usage
 
 liri app has the following 4 command options:
@@ -12,6 +18,7 @@ liri app has the following 4 command options:
 * spotify-this-song
 * movie-this
 * do-what-it-says
+* help
 
 node liri `concert-this` [Artist]: This will list all comming shows Dates and Locations of that Artist.
 
