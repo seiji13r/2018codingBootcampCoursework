@@ -13,9 +13,23 @@ liri app has the following 4 command options:
 * movie-this
 * do-what-it-says
 
-When Concert This command is incomplete the output will Warn that situation.
-When Spotify-This command is incomplete the output will be the info from the song "The Sign" of Ace of Base.
-When Movie-This command is incomplete the output will be the info from the Movie "Mr. Nobody".
+node liri `concert-this` [Artist]: This will list all comming shows Dates and Locations of that Artist.
+
+> When Concert This command is incomplete the output will Warn that situation.
+
+node liri `spotify-this-song` [Song]: This will list all Spotify Album conincidences.
+
+> When Spotify-This command is incomplete the output will be the info from the song "The Sign" of Ace of Base.
+
+node liri `spotify-this-song` [Movie Name]: This will list the information of the Given Movie.
+
+> When Movie-This command is incomplete the output will be the info from the Movie "Mr. Nobody".
+
+node liri `do-what-it-says`: This will choose randomly one of the commands in the file random.txt and it will execute it.
+
+## Usage Demo
+
+Click on the Image to download the video.
 
 # Requirements
 
@@ -23,6 +37,9 @@ When Movie-This command is incomplete the output will be the info from the Movie
 * Download the Project Directory and Install the Dependencies with npm -i
 * Request the API Keys of (Spotify, OMBD and BandsInTown)
 * Create the file `.env` and fill it with your Personal API Keys.
+
+# Installation
+
 
 # Configuration
 
