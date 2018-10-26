@@ -5,11 +5,25 @@ LIRI is like iPhone's SIRI. However, while SIRI is a Speech Interpretation and R
 
 LIRI is a command line NodeJS Application that takes in typed parameters and gives you back data.
 
+[Download](https://github.com/seiji13r/2018codingBootcampCoursework/raw/master/10-HW-NodeJS/liri-node-app.zip)
+
 TABLE OF CONTENTS
-* [Usage](#usage)
-* [Usage Demo](#usage-demo)
-* [Requirements](#requirements)
-* [Installation](#installation)
+=================
+- [Liri App](#liri-app)
+    - [Introduction](#introduction)
+- [Usage](#usage)
+    - [Usage Demo](#usage-demo)
+- [Requirements](#requirements)
+- [Installation](#installation)
+- [Configuration](#configuration)
+- [API Keys Request](#api-keys-request)
+    - [Spotify](#spotify)
+    - [OMDB API](#omdb-api)
+    - [Bands in Town API](#bands-in-town-api)
+- [Configure the .env file with the API Keys](#configure-the-env-file-with-the-api-keys)
+- [API keys](#api-keys)
+- [How it was build?](#how-it-was-build)
+- [Code Explained](#code-explained)
 
 # Usage
 
@@ -136,6 +150,10 @@ BANDSINTOWN_API_KEY=your-bands-in-town-key
 * Break Down with Switch/Case for each Command Option.
 * API Keys Request for Spotify, OMBD and Bands In Town.
 * Resolve the Isolation of these Confidential data Keys into a single file `.env` and invoke it from within the javascript.
-* Encapsulate in Functions each Command Option.
+* Encapsulate in Functions each Command Option Functionality.
 * Importing Requiered Modules and Assigned to Variables inside the Program.
-* 
+* Resolving each Function Functionality. NOTE: "The result output is Stored in a String before log it in the console"
+* Encapsulating the main program into a function so we can call it from within the program.
+* Implementing the File Logging functionality to capture all program outputs to keep track of usage.
+  
+# Code Explained
