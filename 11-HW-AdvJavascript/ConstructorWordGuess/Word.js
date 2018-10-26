@@ -1,5 +1,7 @@
 // Constructor Letter
-var Word = function(){
+var Word = function(word){
+  this.word = word;
+  this.gameWord = [];
   
 }
 

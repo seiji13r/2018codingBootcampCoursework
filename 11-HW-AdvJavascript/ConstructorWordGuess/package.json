@@ -1,0 +1,18 @@
+{
+  "name": "cli-wordguess",
+  "version": "1.0.0",
+  "description": "A Command Line Word Guess Game",
+  "main": "index.js",
+  "scripts": {
+    "test": "node index.js"
+  },
+  "keywords": [
+    "game"
+  ],
+  "author": "Seiji Osada",
+  "license": "ISC",
+  "dependencies": {
+    "inquirer": "^6.2.0",
+    "prompt": "^1.0.0"
+  }
+}
