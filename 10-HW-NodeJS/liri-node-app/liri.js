@@ -121,13 +121,15 @@ function concertThis(key, artist){
 // spotifyThisSong Uses the Spotify API to retrieve information from a given Song
 function spotifyThisSong(song){
   let formatedOutput = ""
+  
+  // Whenever the song is undefined we'll defaul the sear to The Sign.
   let myDefault = false;
   if(song===undefined){
     song = "The Sign";
     myDefault = true;
   }
 
-  spotify.search({ type: 'track', query: song }, function(err, data) {
+  spotify.search({ type: 'track', query: song, limit: 5 }, function(err, data) {
     if (err) {
       formatedOutput = 'Error occurred: ' + err;
       logIt(formatedOutput);
@@ -135,6 +137,7 @@ function spotifyThisSong(song){
     } else {
       formatedOutput = ""
       if(myDefault){
+        // This Shows "The Sign" from Ace of Base
         let currentSong = data.tracks.items[7];
         formatedOutput += "\nArtist(s): " + currentSong.artists[0].name;
         formatedOutput += "\nSong's Name: " + currentSong.name;
@@ -274,9 +277,9 @@ function logIt(text){
       console.log(err);
     }
     // If no error is experienced, we'll log the phrase "Content Added" to our node console.
-    else {
-      console.log("COMMAND LOGGED!");
-    }
+    // else {
+    //   console.log("COMMAND LOGGED!");
+    // }
   });
 }
 
@@ -322,8 +325,8 @@ function liriMain(cmd, cmdArgString){
   } else {
     // Not Valid Inputs - Display Help
     // Print Help
-    console.log("\nSomething Went Wrong!!\n");
-    logIt("\nSomething Went Wrong!!\n");
+    console.log("\nSomething Went Wrong!!");
+    logIt("\nSomething Went Wrong!!");
     Help();
   }
 }
