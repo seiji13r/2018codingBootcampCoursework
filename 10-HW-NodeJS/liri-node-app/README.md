@@ -72,7 +72,7 @@ Click on the Image to download the video.
 * Under ´liri-node-app´ create a file .env
 * Include the Keys as swhon in [Configure the .env file with the API Keys](#configure-the-env-file-with-the-api-keys)
 
-[Configuration Video]()
+[Configuration Video](https://drive.google.com/file/d/1QvNVmr3NGm03LwQ8ZZUK_8T4jC0vPotY/view?usp=sharing)
 
 # API Keys Request
 

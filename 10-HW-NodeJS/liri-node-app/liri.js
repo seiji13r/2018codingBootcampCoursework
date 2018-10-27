@@ -129,7 +129,7 @@ function spotifyThisSong(song){
     myDefault = true;
   }
 
-  spotify.search({ type: 'track', query: song, limit: 5 }, function(err, data) {
+  spotify.search({ type: 'track', query: song, limit: 10 }, function(err, data) {
     if (err) {
       formatedOutput = 'Error occurred: ' + err;
       logIt(formatedOutput);
