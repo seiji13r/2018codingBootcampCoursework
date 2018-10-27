@@ -49,7 +49,8 @@ node liri `do-what-it-says`: This will choose randomly one of the commands in th
 
 ## Usage Demo
 
-Click on the Image to download the video.
+Click on the link to view the video.
+[Demo](https://drive.google.com/file/d/1zlbPj8XXPOUDmiZLkxDPvLWrsoNKPEbl/view?usp=sharing)
 
 # Requirements
 
@@ -167,3 +168,5 @@ BANDSINTOWN_API_KEY=your-bands-in-town-key
 * Implementing the File Logging functionality to capture all program outputs to keep track of usage.
   
 # Code Explained
+
+Check the liri.js Comments
