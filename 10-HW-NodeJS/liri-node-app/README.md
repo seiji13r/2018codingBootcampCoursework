@@ -21,7 +21,6 @@ TABLE OF CONTENTS
     - [OMDB API](#omdb-api)
     - [Bands in Town API](#bands-in-town-api)
 - [Configure the .env file with the API Keys](#configure-the-env-file-with-the-api-keys)
-- [API keys](#api-keys)
 - [How it was build?](#how-it-was-build)
 - [Code Explained](#code-explained)
 
@@ -61,8 +60,19 @@ Click on the Image to download the video.
 
 # Installation
 
+* Download the Zip file from [Here](https://github.com/seiji13r/2018codingBootcampCoursework/raw/master/10-HW-NodeJS/liri-node-app.zip).
+* Uncompress it in any local desired location.
+* Open the installation path with terminal.
+* Inside ´liri-node-app´ run `npm install`.
+
+[Installation Video](https://drive.google.com/file/d/1v7gNQ4h9gD787OxKhCD7we8QMBEy1JML/view?usp=sharing)
 
 # Configuration
+
+* Under ´liri-node-app´ create a file .env
+* Include the Keys as swhon in [Configure the .env file with the API Keys](#configure-the-env-file-with-the-api-keys)
+
+[Configuration Video]()
 
 # API Keys Request
 
