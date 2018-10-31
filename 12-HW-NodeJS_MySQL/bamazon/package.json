@@ -1,0 +1,27 @@
+{
+  "name": "bamazon",
+  "version": "1.0.0",
+  "description": "A Command Line Shopping application",
+  "main": "bamazonCustomer.js",
+  "scripts": {
+    "test": "node bamazonCustomer.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/seiji13r/2018codingBootcampCoursework.git"
+  },
+  "keywords": [
+    "MySQL",
+    "NodeJS"
+  ],
+  "author": "Seiji Osada",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/seiji13r/2018codingBootcampCoursework/issues"
+  },
+  "homepage": "https://github.com/seiji13r/2018codingBootcampCoursework#readme",
+  "dependencies": {
+    "inquirer": "^6.2.0",
+    "mysql": "^2.16.0"
+  }
+}
