@@ -1,8 +1,7 @@
-# Advanced JavaScript Assignment: Constructor Word Guess
+#Advanced JavaScript Assignment: Constructor Word Guess
 
 <!-- TOC -->
 
-- [Advanced JavaScript Assignment: Constructor Word Guess](#advanced-javascript-assignment-constructor-word-guess)
 - [Overview](#overview)
   - [Video Demo](#video-demo)
 - [Installation](#installation)
