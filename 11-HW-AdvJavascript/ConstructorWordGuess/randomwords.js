@@ -1,7 +1,6 @@
 // Animal Array 
 // Fragment from https://gist.github.com/borlaym/585e2e09dd6abd9b0d0a
 
-
 // animals = [
 //   "Aardvark",
 //   "Albatross",
@@ -236,23 +235,9 @@ animals = [
   "Eagle",
   "Elephant",
   "Fish",
-  "Frog",,
-  "Horse",
-  "Kangaroo",
-  "Lion",
-  "Monkey",
-  "Panther",
-  "Parrot",
-  "Rabbit",
-  "Raccoon",
-  "Shark",
-  "Sheep",
-  "Snake",
   "Spider",
   "Turtle",
   "Wolf",
-  "Wolverine",
-  "Woodpecker",
   "Zebra"
 ]
 

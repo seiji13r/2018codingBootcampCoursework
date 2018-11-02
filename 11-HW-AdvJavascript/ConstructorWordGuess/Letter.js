@@ -23,7 +23,8 @@ var Letter = function(character){
     }
   }
 
-  // isThis: This Method will compare a character to this Letter and turn the guessed value to true if it was guessed.
+  // isThis: This Method will compare a character to this Letter and turn the 
+  // guessed value to true if it was guessed.
   this.isThis = function(charInput){
     if(charInput.toUpperCase().charAt(0) === this.character.toUpperCase()){
       this.guessed = true;
@@ -34,7 +35,8 @@ var Letter = function(character){
     }
   }
 
-  // forceDisplay: This Method will force display the Letter regardless if it was not guessed.
+  // forceDisplay: This Method will force display the Letter regardless if it 
+  // was not guessed.
   this.forceDisplay = function(){
     return this.character;
   }
