@@ -39,7 +39,7 @@ As Hangup like Game you will be challenged to guess a word and type the letters 
 * NodeJS 8.x or above installed.
 
 ## Step by Step installation  
-* Download the Package [[DownloadLink]](../constructorword.zip)
+* Download the Package [[DownloadLink]](https://github.com/seiji13r/2018codingBootcampCoursework/blob/master/11-HW-AdvJavascript/constructorword.zip?raw=true)
 * Unzip the package locally anywhere. 
 * cd into the ConstructorWordGuess directory.
 * Install all npm dependencies with `npm install`.
