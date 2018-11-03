@@ -37,11 +37,13 @@
 * Install all npm dependencies with `npm install`.
 
 ## Video Installation Walk Trough
-[Video Walk Trough](hello)
+[Video Walk Trough]()
 
 # Configuration
 
 This software does not require any specific configuration for proper operation, however you can customize:
+
+[Config Video]()
 
 # Development
 

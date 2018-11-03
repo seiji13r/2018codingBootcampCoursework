@@ -31,7 +31,7 @@ As Hangup like Game you will be challenged to guess a word and type the letters 
 
 ## Video Demo
 
-[Game Demo Video]()
+[Game Demo Video](https://drive.google.com/open?id=1b52HM_a1SEE3mvt4I6kMSadBoxxJ8a21)
 
 # Installation
 
@@ -45,8 +45,7 @@ As Hangup like Game you will be challenged to guess a word and type the letters 
 * Install all npm dependencies with `npm install`.
 
 ## Video Installation Walk Trough
-[Video Walk Trough](hello)
-
+[Video Walk Trough](https://drive.google.com/open?id=1M2wMMiALmEa1nFCDuN4N-cLxjJQXMiIy)
 
 # Configuration
 
@@ -68,6 +67,9 @@ module.exports = wordsArray;
 // index.js
 15: var chances = 10;
 ```
+
+[Config Video](https://drive.google.com/open?id=1ugW6_KArBVdQVPyvBVHMb1rPiGT8jbrw)
+
 # Development
 
 ## Libraries
