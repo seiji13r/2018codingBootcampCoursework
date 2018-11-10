@@ -45,7 +45,7 @@ function displayProducts(){
   var query="SELECT * FROM products";
   connection.query(query, function(err,res){
     if (err) throw err;
-    displayTable(res);
+    // displayTable(res);
     console.log("\n\n");
     res.forEach((row, idx, array) =>{
       sales = row.price * (Math.floor(Math.random()*10+1))
@@ -56,7 +56,7 @@ function displayProducts(){
         if(err) throw err;
         // console.log(response.message);
         if(idx === array.length - 1){
-          displayTable(res);
+          // displayTable(res);
           connection.end();
         }
       });

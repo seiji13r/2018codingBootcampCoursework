@@ -68,7 +68,7 @@ PRIMARY KEY(department_id)
 
 INSERT INTO bamazon_db.departments (department_name, over_head_cost) VALUES ("Books", 2000);
 INSERT INTO bamazon_db.departments (department_name, over_head_cost) VALUES ("Clothing", 3000);
-INSERT INTO bamazon_db.departments (department_name, over_head_cost) VALUES ("Electronics", 5000);
+INSERT INTO bamazon_db.departments (department_name, over_head_cost) VALUES ("Electronics", 100000);
 INSERT INTO bamazon_db.departments (department_name, over_head_cost) VALUES ("Home", 10000);
 INSERT INTO bamazon_db.departments (department_name, over_head_cost) VALUES ("Video Games", 8000);
 
