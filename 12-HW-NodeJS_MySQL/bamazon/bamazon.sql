@@ -14,13 +14,13 @@ item_id INT AUTO_INCREMENT NOT NULL,
 -- product_name (Name of product)
 product_name VARCHAR(50) UNIQUE NOT NULL,
 -- department_name
-department_name VARCHAR(30) NOT NULL,
+department_name VARCHAR(30) NOT NULL DEFAULT "",
 -- price (cost to customer)
-price DECIMAL(10,2) NOT NULL,
+price DECIMAL(10,2) NOT NULL DEFAULT 0.0,
 -- stock_quantity (how much of the product is available in stores)
 stock_quantity INT(10) NOT NULL DEFAULT 0,
 -- product sales
-product_sales DECIMAL(10,2) NOT NULL,
+product_sales DECIMAL(10,2) NOT NULL DEFAULT 0.0,
 -- Set the id as this table's primary key
 PRIMARY KEY(item_id)
 );
@@ -51,7 +51,7 @@ INSERT INTO bamazon_db.products (product_name, department_name, price, stock_qua
 
 SELECT COUNT(*) FROM bamazon_db.products;
 
-SELECT * FROM bamazon_db.products;
+SELECT * FROM bamazon_db.products ORDER BY department_name;
 
 
 CREATE TABLE departments(
@@ -59,9 +59,28 @@ CREATE TABLE departments(
   -- item_id (unique id for each product)
 department_id INT AUTO_INCREMENT NOT NULL,
 -- department_name
-department_name VARCHAR(30) NOT NULL,
+department_name VARCHAR(30) NOT NULL DEFAULT "",
 -- overhead cost
-over_head_cost DECIMAL(10,2) NOT NULL,
+over_head_cost DECIMAL(10,2) NOT NULL DEFAULT 0.0,
   -- Set the id as this table's primary key
-PRIMARY KEY(item_id)
+PRIMARY KEY(department_id)
 );
+
+INSERT INTO bamazon_db.departments (department_name, over_head_cost) VALUES ("Books", 2000);
+INSERT INTO bamazon_db.departments (department_name, over_head_cost) VALUES ("Clothing", 3000);
+INSERT INTO bamazon_db.departments (department_name, over_head_cost) VALUES ("Electronics", 5000);
+INSERT INTO bamazon_db.departments (department_name, over_head_cost) VALUES ("Home", 10000);
+INSERT INTO bamazon_db.departments (department_name, over_head_cost) VALUES ("Video Games", 8000);
+
+SELECT * FROM bamazon_db.departments;
+
+SELECT * FROM bamazon_db.products ORDER BY department_name;
+
+USE bamazon_db;
+SELECT departments.department_id, departments.department_name, num_products, over_head_cost, department_sales, (department_sales - over_head_cost) AS profit
+FROM bamazon_db.departments
+LEFT JOIN
+(SELECT department_name, COUNT(*) AS num_products, SUM(product_sales) AS department_sales FROM bamazon_db.products GROUP BY department_name) AS summarized
+ON bamazon_db.departments.department_name = summarized.department_name ORDER BY profit DESC;  
+
+USE bamazon_db; SELECT departments.department_id, departments.department_name, num_products, over_head_cost, department_sales, (department_sales - over_head_cost) AS profit FROM bamazon_db.departments LEFT JOIN (SELECT department_name, COUNT(*) AS num_products, SUM(product_sales) AS department_sales FROM bamazon_db.products GROUP BY department_name) AS summarized ON bamazon_db.departments.department_name = summarized.department_name ORDER BY profit DESC;
