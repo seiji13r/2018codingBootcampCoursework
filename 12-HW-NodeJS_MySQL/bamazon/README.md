@@ -8,6 +8,7 @@
 - [Installation](#installation)
     - [Requirements](#requirements)
     - [Step by Step installation](#step-by-step-installation)
+        - [MySQL Connection Settings](#mysql-connection-settings)
     - [Video Installation Walk Trough](#video-installation-walk-trough)
 - [Configuration](#configuration)
 - [Development](#development)
@@ -36,8 +37,22 @@
 ## Step by Step installation  
 * Download the Package [[DownloadLink]]()
 * Unzip the package locally anywhere. 
-* cd into the ConstructorWordGuess directory.
+* cd into the bamazon directory.
 * Install all npm dependencies with `npm install`.
+* Create the `.env`file and update MySQL connection Settings accordingly.
+* Open MySQL Workbench or the preferred MySQL GUI client and execute the file bamazon.sql
+
+### MySQL Connection Settings
+Create the file .env inside the project directory and write inside it the following.
+Update the values accordingly.
+```bash
+# MySQL CONNECTION SETTINGS
+BAMAZON_MYSQL_IP="127.0.0.1"
+BAMAZON_MYSQL_PORT=3306
+BAMAZON_MYSQL_USER="root"
+BAMAZON_MYSQL_PASSWORD=""
+BAMAZON_MYSQL_DB="bamazon_db"
+```
 
 ## Video Installation Walk Trough
 [Video Walk Trough]()

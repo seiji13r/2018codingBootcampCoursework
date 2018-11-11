@@ -1,3 +1,5 @@
+// Load dotenv
+require("dotenv").config();
 // Load MySQL
 var mysql=require("mysql");
 // Load Inquirer
@@ -6,11 +8,11 @@ var inquirer=require("inquirer");
 var Table=require("cli-table3");
 
 var connection=mysql.createConnection({
-  host:"192.168.1.240",
-  port: 3306,
-  user:"myroot",
-  password:"myroot",
-  database:"bamazon_db"
+  host:process.env.BAMAZON_MYSQL_IP,
+  port: process.env.BAMAZON_MYSQL_PORT,
+  user:process.env.BAMAZON_MYSQL_USER,
+  password:process.env.BAMAZON_MYSQL_PASSWORD,
+  database:process.env.BAMAZON_MYSQL_DB
 });
 
 connection.connect(function(err) {
