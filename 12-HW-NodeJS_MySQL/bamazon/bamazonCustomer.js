@@ -23,7 +23,7 @@ connection.connect(function(err) {
 
 // Print Table Function
 function displayTable(rows) {
-  const headers = ["Item", "Name", "Department", "Price [MXN]", "Stock Qt"];
+  const headers = ["Item", "Name", "Department", "Price [MXN]", "Stock Qt", "Product Sales"];
   let table = new Table({
     head: headers
   });
@@ -34,7 +34,8 @@ function displayTable(rows) {
       row.product_name,
       row.department_name,
       row.price,
-      row.stock_quantity
+      row.stock_quantity,
+      row.product_sales
     ]);
   });
 
