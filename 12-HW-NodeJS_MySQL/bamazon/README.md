@@ -111,9 +111,9 @@ BAMAZON_MYSQL_DB="bamazon_db"
 # Development
 
 ## Dependencies
-[Inquirer](https://github.com/SBoudrias/Inquirer.js#readme)
-[MySQL](https://www.npmjs.com/package/mysql)
-[dotenv](https://www.npmjs.com/package/dotenv)
+* [Inquirer](https://github.com/SBoudrias/Inquirer.js#readme)
+* [MySQL](https://www.npmjs.com/package/mysql)
+* [dotenv](https://www.npmjs.com/package/dotenv)
 
 ## Development Process
 * Create the File Structure
