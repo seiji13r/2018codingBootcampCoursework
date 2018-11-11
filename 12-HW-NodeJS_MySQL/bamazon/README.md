@@ -5,6 +5,10 @@
 - [NodeJS and MySQL](#nodejs-and-mysql)
 - [Overview](#overview)
     - [Video Demo](#video-demo)
+    - [ScreenShots](#screenshots)
+        - [bamazonCustomer.js](#bamazoncustomerjs)
+        - [bamazonCustomer.js](#bamazoncustomerjs-1)
+        - [bamazonSupervisor.js](#bamazonsupervisorjs)
 - [Installation](#installation)
     - [Requirements](#requirements)
     - [Step by Step installation](#step-by-step-installation)
@@ -12,13 +16,14 @@
     - [Video Installation Walk Trough](#video-installation-walk-trough)
 - [Configuration](#configuration)
 - [Development](#development)
-    - [Libraries](#libraries)
+    - [Dependencies](#dependencies)
     - [Development Process](#development-process)
     - [Development Notes](#development-notes)
-        - [bamazonCustomer.js](#bamazoncustomerjs)
-        - [bamazonManager.js](#bamazonmanagerjs)
-        - [bamazonSupervisor.js](#bamazonsupervisorjs)
-    - [bamazonSupervisor.js SQL query construction.](#bamazonsupervisorjs-sql-query-construction)
+        - [Functions Relationship](#functions-relationship)
+            - [bamazonCustomer.js](#bamazoncustomerjs-2)
+            - [bamazonManager.js](#bamazonmanagerjs)
+            - [bamazonSupervisor.js](#bamazonsupervisorjs-1)
+        - [bamazonSupervisor.js SQL query construction.](#bamazonsupervisorjs-sql-query-construction)
 
 <!-- /TOC -->
 
@@ -28,9 +33,9 @@ This `bamazon` Project ilustrates the usage of NodeJS along with MySQL database.
 This project simulates a simplified version of an online Store.
 The project database contains 2 tables. Store Products [`products`] and Store Departments [`departments`].
 The package contains 3 main nodejs command line programs which provides business actions against the Database of 3 different roles.
-    * Customer: [bamazonCustomer.js] - Can purchase products from the **Store** and keep the **Inventory** up to date automatically.
-    * Manager: [bamazonManager.js] - Can *visualize* the **Stock** Can add *supply* the **Inventory** and *add* **Products**.
-    * Supervisor: [bamazonSupervisor.js] - Can obtain a per *Department* **Sales Performance Report**.
+    * Customer: [`bamazonCustomer.js`] - Can purchase products from the **Store** and keep the **Inventory** up to date automatically.
+    * Manager: [`bamazonManager.js`] - Can *visualize* the **Stock** Can add *supply* the **Inventory** and *add* **Products**.
+    * Supervisor: [`bamazonSupervisor.js`] - Can obtain a per *Department* **Sales Performance Report**.
 
 [Source Code](https://github.com/seiji13r/2018codingBootcampCoursework/tree/master/12-HW-NodeJS_MySQL/bamazon/)
 
@@ -39,6 +44,28 @@ The package contains 3 main nodejs command line programs which provides business
 [bamazonCustomer.js Demo Video]()
 [bamazonManager.js Demo Video]()
 [bamazonSupervisor.js Demo Video]()
+
+## ScreenShots
+### bamazonCustomer.js
+Products Table
+![bamazonCustomer.js](img/00_customer.png)
+Buy Products by ID
+![bamazonCustomer.js](img/01_customer.png)
+
+### bamazonCustomer.js
+Manager Menu
+![bamazonManager.js](img/02_manager.png)
+Manager (Display Products)
+![bamazonManager.js](img/03_manager_products.png)
+Manager (Display Products with Low Inventory)
+![bamazonManager.js](img/04_low_inventory.png)
+Manager Add Products to the Stock
+![bamazonManager.js](img/05_add_inventory.png)
+Manager add New Product
+![bamazonManager.js](img/06_add_new_product.png)
+
+### bamazonSupervisor.js
+![bamazonSupervisor.js]
 
 # Installation
 
@@ -66,17 +93,20 @@ BAMAZON_MYSQL_DB="bamazon_db"
 ```
 
 ## Video Installation Walk Trough
-[Install Package and Configure MySQL Connection]()
-[Install Package and Configure MySQL Connection]()
+[Install the Package and Configure MySQL Connection]()
+[Populate the data base and test Program]()
 
 # Configuration
 
-This software does not require any specific configuration for proper operation.
+* Make sure the file .env has been updated.
+* Create the Database wih the `bamazon.sql` file provided.
 
 # Development
 
-## Libraries
+## Dependencies
 [Inquirer](https://github.com/SBoudrias/Inquirer.js#readme)
+[MySQL](https://www.npmjs.com/package/mysql)
+[dotenv](https://www.npmjs.com/package/dotenv)
 
 ## Development Process
 * Create the File Structure
@@ -113,7 +143,8 @@ This software does not require any specific configuration for proper operation.
     * sdafdsf
 
 ## Development Notes
-### bamazonCustomer.js
+### Functions Relationship
+#### bamazonCustomer.js
 **Asynchronous Functions Relationship**
 ```console
         displayProducts()
@@ -129,21 +160,30 @@ displayTable()  productSelection()
 displayProducts() 
 ```
 
-### bamazonManager.js
+#### bamazonManager.js
 **Asynchronous Functions Relationship**
 ```console
-        managerMenu()
+-------------------------------managerMenu()-------------------------------------
+            ^                       ^                       ^           ^
+    displayProducts()   lowInventory(callbackFunc)  addInventory()  addProduct()
+        ^       ^              ^            ^           ^               ^
+displayTable()  ^        displayTable()     ^           ^               ^
+        continueOperations()    continueOperations()    ^       continueOperations()
+                ^                        ^        continueOperations()  ^
+                ^                        ^              ^               ^
+            managerMenu()           managerMenu()    managerMenu()    managerMenu()
+```
+
+#### bamazonSupervisor.js
+**Asynchronous Functions Relationship**
+```console
+        displayProfit()
+            ^
+        displayTable()
 
 ```
 
-### bamazonSupervisor.js
-**Asynchronous Functions Relationship**
-```console
-        supervisorMenu()
-
-```
-
-## bamazonSupervisor.js SQL query construction.
+### bamazonSupervisor.js SQL query construction.
 ```sql
 -- 1. Create the query to obtain a report from products table with summarized `product_sales` per Department.
 SELECT department_name, COUNT(*) AS num_products, SUM(product_sales) AS department_sales FROM bamazon_db.products GROUP BY department_name
