@@ -84,3 +84,6 @@ LEFT JOIN
 ON bamazon_db.departments.department_name = summarized.department_name ORDER BY profit DESC;  
 
 USE bamazon_db; SELECT departments.department_id, departments.department_name, num_products, over_head_cost, department_sales, (department_sales - over_head_cost) AS profit FROM bamazon_db.departments LEFT JOIN (SELECT department_name, COUNT(*) AS num_products, SUM(product_sales) AS department_sales FROM bamazon_db.products GROUP BY department_name) AS summarized ON bamazon_db.departments.department_name = summarized.department_name ORDER BY profit DESC;
+
+
+SELECT * FROM bamazon_db.products;
