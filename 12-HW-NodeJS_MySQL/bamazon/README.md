@@ -30,19 +30,25 @@
 # Overview
 
 This `bamazon` Project ilustrates the usage of NodeJS along with MySQL database.
+
 This project simulates a simplified version of an online Store.
+
 The project database contains 2 tables. Store Products [`products`] and Store Departments [`departments`].
+
 The package contains 3 main nodejs command line programs which provides business actions against the Database of 3 different roles.
-    * Customer: [`bamazonCustomer.js`] - Can purchase products from the **Store** and keep the **Inventory** up to date automatically.
-    * Manager: [`bamazonManager.js`] - Can *visualize* the **Stock** Can add *supply* the **Inventory** and *add* **Products**.
-    * Supervisor: [`bamazonSupervisor.js`] - Can obtain a per *Department* **Sales Performance Report**.
+
+* Customer: [*bamazonCustomer.js*] - Can purchase products from the **Store** and keep the **Inventory** up to date automatically.
+* Manager: [*bamazonManager.js*] - Can *visualize* the **Stock** Can add *supply* the **Inventory** and *add* **Products**.
+* Supervisor: [*bamazonSupervisor.js*] - Can obtain a per *Department* **Sales Performance Report**.
 
 [Source Code](https://github.com/seiji13r/2018codingBootcampCoursework/tree/master/12-HW-NodeJS_MySQL/bamazon/)
 
 ## Video Demo
 
 [bamazonCustomer.js Demo Video]()
+
 [bamazonManager.js Demo Video]()
+
 [bamazonSupervisor.js Demo Video]()
 
 ## ScreenShots
@@ -65,7 +71,7 @@ Manager add New Product
 ![bamazonManager.js](img/06_add_new_product.png)
 
 ### bamazonSupervisor.js
-![bamazonSupervisor.js]
+![bamazonSupervisor.js](img/07_supervisor.png)
 
 # Installation
 
@@ -94,6 +100,7 @@ BAMAZON_MYSQL_DB="bamazon_db"
 
 ## Video Installation Walk Trough
 [Install the Package and Configure MySQL Connection]()
+
 [Populate the data base and test Program]()
 
 # Configuration
