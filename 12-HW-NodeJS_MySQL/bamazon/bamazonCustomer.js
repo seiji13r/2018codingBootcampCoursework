@@ -71,8 +71,8 @@ function productSelection(){
       default: true
     }
   ]).then(answers=>{
-    console.log("Item ID:", answers.id);
-    console.log("Quantity:", answers.quantity);
+    // console.log("Item ID:", answers.id);
+    // console.log("Quantity:", answers.quantity);
     if(answers.confirm){
       inventoryUpdate(answers.id, answers.quantity);
     }
@@ -84,7 +84,7 @@ function productSelection(){
 
 // This function updates the inventory.
 function inventoryUpdate(id, quantity){
-  query = "SELECT stock_quantity FROM products WHERE ?"
+  let query = "SELECT * FROM products WHERE ?"
   connection.query(query, {"item_id":id}, function(err, res){
     if (err) throw err;
     // console.log(res);
@@ -92,10 +92,11 @@ function inventoryUpdate(id, quantity){
       // console.log("Check for existence and Update Table");
       // console.log("Stock Quantity", res[0].stock_quantity);
       if(quantity<=res[0].stock_quantity){
-        newQuantity = res[0].stock_quantity-Math.abs(quantity)
-        query = "UPDATE products SET stock_quantity=" + newQuantity + " WHERE ?"
-        query_obj = {"item_id":id}
-        connection.query(query, query_obj, function(err, res){
+        let newQuantity = res[0].stock_quantity-Math.abs(quantity);
+        let newProductSales = res[0].product_sales + res[0].price * Math.abs(quantity);
+        let query2 = "UPDATE products SET stock_quantity=" + newQuantity + ", product_sales=" + newProductSales + " WHERE ?"
+        let query2_obj = {"item_id":id}
+        connection.query(query2, query2_obj, function(err, res){
           if (err) throw err;
           continueShopping();
         });
