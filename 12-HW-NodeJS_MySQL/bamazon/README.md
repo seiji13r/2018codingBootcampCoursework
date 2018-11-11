@@ -18,16 +18,27 @@
         - [bamazonCustomer.js](#bamazoncustomerjs)
         - [bamazonManager.js](#bamazonmanagerjs)
         - [bamazonSupervisor.js](#bamazonsupervisorjs)
+    - [bamazonSupervisor.js SQL query construction.](#bamazonsupervisorjs-sql-query-construction)
 
 <!-- /TOC -->
 
 # Overview
 
+This `bamazon` Project ilustrates the usage of NodeJS along with MySQL database.
+This project simulates a simplified version of an online Store.
+The project database contains 2 tables. Store Products [`products`] and Store Departments [`departments`].
+The package contains 3 main nodejs command line programs which provides business actions against the Database of 3 different roles.
+    * Customer: [bamazonCustomer.js] - Can purchase products from the **Store** and keep the **Inventory** up to date automatically.
+    * Manager: [bamazonManager.js] - Can *visualize* the **Stock** Can add *supply* the **Inventory** and *add* **Products**.
+    * Supervisor: [bamazonSupervisor.js] - Can obtain a per *Department* **Sales Performance Report**.
+
 [Source Code](https://github.com/seiji13r/2018codingBootcampCoursework/tree/master/12-HW-NodeJS_MySQL/bamazon/)
 
 ## Video Demo
 
-[Game Demo Video]()
+[bamazonCustomer.js Demo Video]()
+[bamazonManager.js Demo Video]()
+[bamazonSupervisor.js Demo Video]()
 
 # Installation
 
@@ -55,13 +66,12 @@ BAMAZON_MYSQL_DB="bamazon_db"
 ```
 
 ## Video Installation Walk Trough
-[Video Walk Trough]()
+[Install Package and Configure MySQL Connection]()
+[Install Package and Configure MySQL Connection]()
 
 # Configuration
 
-This software does not require any specific configuration for proper operation, however you can customize:
-
-[Config Video]()
+This software does not require any specific configuration for proper operation.
 
 # Development
 
@@ -92,8 +102,15 @@ This software does not require any specific configuration for proper operation, 
     * Create the Update call back function. So it prints the inventory table and then request for the product to add inventory.
     * Create the Add Product Function.
     * Re-Use the function that request to continue or quit the program.
-    
-* Create the managerCustomer.js app.
+* Create the supervisorCustomer.js app.
+    * Include the required npm Libraries.
+    * Include  MySQL Connection.
+    * Include hiding the connection credentials and creating the connection's configuration file.
+    * Resolve the Query to obtain the Sales Performance per Department
+        1. Create the query to obtain a report from products table with summarized `product_sales` per Department.
+        2. Join the previous table with the Department's table.
+        3. From the resulting table create a calculated column with `profit`=`product_sales`-`over_head_cost`.
+    * sdafdsf
 
 ## Development Notes
 ### bamazonCustomer.js
@@ -124,4 +141,24 @@ displayProducts()
 ```console
         supervisorMenu()
 
+```
+
+## bamazonSupervisor.js SQL query construction.
+```sql
+-- 1. Create the query to obtain a report from products table with summarized `product_sales` per Department.
+SELECT department_name, COUNT(*) AS num_products, SUM(product_sales) AS department_sales FROM bamazon_db.products GROUP BY department_name
+
+-- 2. Join the previous table with the Department's table.
+SELECT *
+FROM bamazon_db.departments
+LEFT JOIN
+(SELECT department_name, COUNT(*) AS num_products, SUM(product_sales) AS department_sales FROM bamazon_db.products GROUP BY department_name) AS summarized
+ON bamazon_db.departments.department_name = summarized.department_name;  
+
+-- 3. From the resulting table create a calculated column with `profit`=`product_sales`-`over_head_cost`.
+SELECT departments.department_id, departments.department_name, num_products, over_head_cost, department_sales, (department_sales - over_head_cost) AS profit
+FROM bamazon_db.departments
+LEFT JOIN
+(SELECT department_name, COUNT(*) AS num_products, SUM(product_sales) AS department_sales FROM bamazon_db.products GROUP BY department_name) AS summarized
+ON bamazon_db.departments.department_name = summarized.department_name ORDER BY profit DESC;  
 ```

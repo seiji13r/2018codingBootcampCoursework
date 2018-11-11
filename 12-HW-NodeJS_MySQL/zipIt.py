@@ -1,18 +1,18 @@
 #!/usr/bin/env python3
-# zip constructorword.zip ConstructorWordGuess/keys.js
+# zip bamazon.zip bamazon/bamazonCustomer.js bamazon/bamazonManager.js ...
 # call(["ls", "-l"])
 
 import os
 from subprocess import call
 
-zipFileName = "constructorword.zip"
+zipFileName = "bamazon.zip"
 
 if os.path.exists(zipFileName):
   os.remove(zipFileName)
 
-myFolder = "ConstructorWordGuess"
+myFolder = "bamazon"
 
-files = ["Letter.js", "Word.js", "index.js", "package.json", "randomwords.js"]
+files = ["bamazon.sql", "bamazonCustomer.js", "bamazonManager.js", "bamazonSupervisor.js", "product_sales_update.js", "README.md"]
 
 print("Compressing Files and Adding them to ", zipFileName)
 for myFile in files:
