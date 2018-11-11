@@ -12,7 +12,7 @@ if os.path.exists(zipFileName):
 
 myFolder = "bamazon"
 
-files = ["bamazon.sql", "bamazonCustomer.js", "bamazonManager.js", "bamazonSupervisor.js", "product_sales_update.js", "README.md"]
+files = ["bamazon.sql", "bamazonCustomer.js", "bamazonManager.js", "bamazonSupervisor.js", "product_sales_update.js", "README.md", ".env_sample"]
 
 print("Compressing Files and Adding them to ", zipFileName)
 for myFile in files:

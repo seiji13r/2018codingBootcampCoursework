@@ -46,7 +46,7 @@ The package contains 3 main nodejs command line programs which provides business
 * NodeJS 8.x or above installed.
 
 ## Step by Step installation  
-* Download the Package [[DownloadLink]]()
+* Download the Package [[DownloadLink]](https://github.com/seiji13r/2018codingBootcampCoursework/blob/master/12-HW-NodeJS_MySQL/bamazon.zip?raw=true)
 * Unzip the package locally anywhere. 
 * cd into the bamazon directory.
 * Install all npm dependencies with `npm install`.
