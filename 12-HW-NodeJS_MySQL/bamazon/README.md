@@ -45,11 +45,11 @@ The package contains 3 main nodejs command line programs which provides business
 
 ## Video Demo
 
-[bamazonCustomer.js Demo Video]()
+[bamazonCustomer.js Demo Video](https://drive.google.com/open?id=1l8V8sfMqSTv-e3_NYR017kW9aNncsWJ-)
 
-[bamazonManager.js Demo Video]()
+[bamazonManager.js Demo Video](https://drive.google.com/open?id=1hszmqpeiw4CmEUDS6Be7tRx6RZO5Csxf)
 
-[bamazonSupervisor.js Demo Video]()
+[bamazonSupervisor.js Demo Video](https://drive.google.com/open?id=17bQYqZRZM7W83IGEYkQ2231YkPrA9IdO)
 
 ## ScreenShots
 ### bamazonCustomer.js
@@ -99,9 +99,9 @@ BAMAZON_MYSQL_DB="bamazon_db"
 ```
 
 ## Video Installation Walk Trough
-[Install the Package and Configure MySQL Connection]()
+[Install the Package and Configure MySQL Connection](https://drive.google.com/open?id=1yVv6YY8pX2_4B6TrrFop19zRfaSJOrTa)
 
-[Populate the data base and test Program]()
+[Populate the data base and test Program](https://drive.google.com/open?id=1wgCy29nsrOW3N2zDYFnqaRizUbfOcYQu)
 
 # Configuration
 
@@ -126,7 +126,7 @@ BAMAZON_MYSQL_DB="bamazon_db"
     * Resolve hiding the connection credentials and creating the connection's configuration file.
     * Resolve Displaying the Data with cli-table3.
     * Resolve the user input with inquirer **What?** and **How Many?**.
-    * Resolve the Invoice ?????
+    * Resolve the Invoice.
     * Resolve the Products table Update.
     * Create a function that will be called at the end of each action to quit the program or keep operating. "This will be the only one ending mysql connection"
 * Create the managerCustomer.js app.
